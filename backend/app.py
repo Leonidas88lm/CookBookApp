@@ -21,7 +21,7 @@ def Api():
     """
 
 
-
+# URL -> te devuelve todas las recetas.
 @app.route('/recetas/', methods=['GET'])
 def recetas():
     try:
@@ -29,6 +29,22 @@ def recetas():
         datos_receta = []
         for receta in recetas:
             dato_receta = {
+                'id':receta.id,
+                'nombre':receta.nombre,
+                'imagen':receta.imagen,
+            }
+            datos_receta.append(dato_receta)
+        return jsonify({'recetas': datos_receta}), 200
+    except Exception as error:
+        print('Error', error)
+        return jsonify({'Mensaje': 'Error'}), 500
+
+# URL -> te devuelve una recetas con mas informacion.
+@app.route('/recetas/<id_receta>', methods=['GET'])
+def receta(id_receta):
+    try:
+        receta = Receta.query.get(id_receta)
+        dato_receta = {
                 'id':receta.id,
                 'nombre':receta.nombre,
                 'imagen':receta.imagen,
@@ -42,39 +58,14 @@ def recetas():
                 'apto_celiaco':receta.apto_celiaco,
                 'apto_diabetico':receta.apto_diabetico,  
                 'apto_lactosa':receta.apto_lactosa, 
-                'apto_keto':receta.apto_keto, 
-            }
-            datos_receta.append(dato_receta)
-        return jsonify({'recetas': datos_receta}), 200
-    except Exception as error:
-        print('Error', error)
-        return jsonify({'Mensaje': 'Error'}), 500
-
-@app.route('/recetas/<id_receta>', methods=['GET'])
-def receta(id_receta):
-    try:
-        receta = Receta.query.get(id_receta)
-        dato_receta = {
-            'id':receta.id,
-            'nombre':receta.nombre,
-            'imagen':receta.imagen,
-            'instruccion':receta.instruccion,
-            'calorias':receta.calorias,
-            'dificultad':receta.dificultad,
-            'tiempo_preparacion':receta.tiempo_preparacion,
-            'tipo_plato':receta.tipo_plato,
-            'apto_vegano':receta. apto_vegano,
-            'apto_vegetariano':receta.apto_vegetariano, 
-            'apto_celiaco':receta.apto_celiaco,
-            'apto_diabetico':receta.apto_diabetico,  
-            'apto_lactosa':receta.apto_lactosa, 
-            'apto_keto':receta.apto_keto, 
+                'apto_keto':receta.apto_keto
         }
         return jsonify({'receta': dato_receta}), 200
     except Exception as error:
         print('Error', error)
         return jsonify({'Mensaje': 'La receta no existe'}), 204
 
+# URL -> te devuelve todas las recetas que se filtraron por nombre.
 @app.route('/recetas/busqueda/', methods=['GET'])
 def buscar_receta_nombre():
     try:
@@ -87,17 +78,6 @@ def buscar_receta_nombre():
                     'id':receta.id,
                     'nombre':receta.nombre,
                     'imagen':receta.imagen,
-                    'instruccion':receta.instruccion,
-                    'calorias':receta.calorias,
-                    'dificultad':receta.dificultad,
-                    'tiempo_preparacion':receta.tiempo_preparacion,
-                    'tipo_plato':receta.tipo_plato,
-                    'apto_vegano':receta. apto_vegano,
-                    'apto_vegetariano':receta.apto_vegetariano, 
-                    'apto_celiaco':receta.apto_celiaco,
-                    'apto_diabetico':receta.apto_diabetico,  
-                    'apto_lactosa':receta.apto_lactosa, 
-                    'apto_keto':receta.apto_keto, 
                 }
                 datos_receta.append(dato_receta)
         if recetas == []:
@@ -108,6 +88,7 @@ def buscar_receta_nombre():
         print('Error', error)
         return jsonify({'Mensaje': 'Error'}), 500       
 
+# URL -> te devuelve el id de una receta random.
 @app.route('/recetas/random/', methods=['GET'])
 def recetas_random():
     try:
