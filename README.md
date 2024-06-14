@@ -1,10 +1,12 @@
 # CookBookApp
 Aplicación web completa basada en recetas de cocina.
 Tecnologias usadas:
-    CSS
-    HTML
-    JS
-    PYTHON
-    FLASK
-    POSTGRESQL
+    Diseño de pagina:
+        HTML
+        CSS (Boostrap)
+        JS (jQuery, Popper)
+    Servidor:
+        PYTHON
+        FLASK
+        POSTGRESQL
     
