@@ -3,15 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App de recetas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Página de Recetas</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CookBookAppmain.css">
 </head>
 <body>
-    <h1>hola</h1>
+
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="#">Recetas</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <input id="search" class="form-control" type="text" placeholder="Buscar recetas..." onkeyup="searchRecipes()">
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filtros
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#" onclick="filterRecipes('alta_proteina')">Alta Proteína</a>
+                    <a class="dropdown-item" href="#" onclick="filterRecipes('bajo_carbohidratos')">Bajo Carbohidratos</a>
+                    <a class="dropdown-item" href="#" onclick="filterRecipes('sin_lactosa')">Sin Lactosa</a>
+                    <a class="dropdown-item" href="#" onclick="filterRecipes('celiacos')">Apto Celíacos</a>
+                    <a class="dropdown-item" href="#" onclick="filterRecipes('vegano')">Vegano</a>
+                    <a class="dropdown-item" href="#" onclick="filterRecipes('tiempo_de_preparacion')">Tiempo de Preparación</a>
+                </div>
+            </li>
+        </ul>
+        
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Iniciar Sesión</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Registrarse</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container spacer">
+    <div class="row" id="recipes">
+        <div class="col-md-4 recipe-card" data-filters="celiacos sin_lactosa bajo_carbohidratos alta_proteina vegano 20_minutos">
+            <h5 class="recipe-title">Ensalada de Quinoa y Vegetales</h5>
+            <div class="card">
+                <img src="https://www.recetaslider.cl/wp-content/uploads/2021/06/principal_5cb62f13ceb97.jpg" class="card-img-top" alt="Ensalada de Quinoa y Vegetales">
+                <div class="card-body">
+                    <p class="card-text">Una ensalada fresca y nutritiva, perfecta para un almuerzo ligero o como acompañamiento</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 recipe-card" data-filters="celiacos sin_lactosa alta_proteina 30_minutos">
+            <h5 class="recipe-title">Tacos de Carne Asada</h5>
+            <div class="card">
+                <img src="https://www.goya.com/media/4124/carne-asada-tacos1.jpg?quality=80" class="card-img-top" alt="Tacos de Carne Asada">
+                <div class="card-body">
+                    <p class="card-text">Deliciosos tacos con carne asada jugosa, perfectos para una comida informal</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 recipe-card" data-filters="vegano 45_minutos">
+            <h5 class="recipe-title">Lasaña de Espinacas y Ricotta</h5>
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/97/f9/b6/97f9b63d59d7d4089a313def55ea61b1.jpg" class="card-img-top" alt="Lasaña de Espinacas y Ricotta">
+                <div class="card-body">
+                    <p class="card-text">Una deliciosa lasaña sin carne, rica en espinacas y queso ricotta</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 recipe-card" data-filters="celiacos sin_lactosa alta_proteina 60_minutos">
+            <h5 class="recipe-title">Paella de Mariscos</h5>
+            <div class="card">
+                <img src="https://www.lafallera.es/wp-content/uploads/2023/11/Valor-nutricional-paella-mariscos-.jpeg" class="card-img-top" alt="Paella de Mariscos">
+                <div class="card-body">
+                    <p class="card-text">Un clásico plato español lleno de sabores del mar</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 recipe-card" data-filters="celiacos sin_lactosa alta_proteina vegano 40_minutos">
+            <h5 class="recipe-title">Falafel</h5>
+            <div class="card">
+                <img src="https://imag.bonviveur.com/falafel-recien-hechos.jpg" class="card-img-top" alt="Falafel">
+                <div class="card-body">
+                    <p class="card-text">Crujientes bolitas de garbanzos y especias, ideales para comer con ensalada o en pan pita</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 recipe-card" data-filters="celiacos sin_lactosa alta_proteina 40_minutos">
+            <h5 class="recipe-title">Pollo al Curry con Leche de Coco</h5>
+            <div class="card">
+                <img src="https://www.cocinacaserayfacil.net/wp-content/uploads/2018/10/Pollo-al-curry-con-leche-de-coco.jpg" class="card-img-top" alt="Pollo al Curry con Leche de Coco">
+                <div class="card-body">
+                    <p class="card-text">Un plato sabroso y aromático, perfecto para los amantes de la comida picante</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 recipe-card" data-filters="vegano 45_minutos">
+            <h5 class="recipe-title">Brownies de Chocolate</h5>
+            <div class="card">
+                <img src="https://recetasdecocina.elmundo.es/wp-content/uploads/2016/11/brownie-de-chocolate.jpg" class="card-img-top" alt="Brownies de Chocolate">
+                <div class="card-body">
+                    <p class="card-text">Deliciosos y esponjosos brownies que se deshacen en la boca</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 recipe-card" data-filters="celiacos sin_lactosa bajo_carbohidratos vegano 30_minutos">
+            <h5 class="recipe-title">Sopa de Tomate y Albahaca</h5>
+            <div class="card">
+                <img src="https://www.recetasnestle.com.ar/sites/default/files/srh_recipes/41d0d43e53b03fc14ebcfde36833ad93.jpg" class="card-img-top" alt="Sopa de Tomate y Albahaca">
+                <div class="card-body">
+                    <p class="card-text">Una sopa reconfortante y llena de sabor, perfecta para cualquier día frío</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Se importa libreria de jquery para poder hacer uso de la funcionalidad de agrandar las imagenes, referencia CookBookAppmain.js linea 26 -->
+<!--Se importa libreria popper para hacer uso de las funcion y complementar el diseño de la pagina, referencia  CookBookAppmain.js linea 1 y 12-->
+<!--Se importa libreria boostrap para el diseño y funcionalidad de la pagina -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="CookBookAppmain.js"></script>
 
 
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="recipeModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="" class="img-fluid" id="modalImage" alt="Recipe Image">
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

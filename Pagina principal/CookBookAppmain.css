@@ -1,0 +1,23 @@
+.recipe-title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.card {
+    margin-bottom: 20px;
+}
+.navbar-custom {
+    background-color: #f8f9fa;
+}
+.navbar-custom .navbar-nav .nav-link {
+    color: #343a40;
+}
+
+.spacer {
+    margin-top: 30px;
+}
+.nav-item:hover {
+    background-color: #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
