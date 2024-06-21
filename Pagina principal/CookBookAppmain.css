@@ -7,6 +7,13 @@
 }
 .navbar-custom {
     background-color: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #ccc; /* Borde del menú superior */
+    background-color: #d4d5d8; /* Color de fondo ligeramente gris */
+    margin-bottom: 0; /* Reducir espacio en blanco debajo del menú */
 }
 .navbar-custom .navbar-nav .nav-link {
     color: #343a40;
@@ -20,4 +27,52 @@
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+.favorite-button {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.5em;
+    margin-left: 10px; /* Ajusta el margen según sea necesario */
+}
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+/* Estilos para el submenú */
+.dropdown-submenu {
+    position: relative;
+}
+/* Estilo para mostrar submenú al pasar el ratón */
+.dropdown-submenu:hover .dropdown-menu {
+    display: block;
+}
+
+/* Colorear nombres al pasar el mouse */
+.dropdown-item:hover, .dropdown-submenu:hover > .dropdown-item {
+    color: blue;
+}
+.center-logo {
+    flex-grow: 1;
+    text-align: center;
+}
+.center-logo img {
+    max-height: 50px;
+}
+
+.navbar-brand, .nav-link {
+    margin-top: 0; /* Eliminar márgenes superiores para ajustar el menú */
+}
+.navbar-brand {
+    margin-right: 1rem;
+}
+.navbar-nav .nav-item {
+    margin-top: 0; /* Eliminar márgenes superiores para ajustar el menú */
+    margin-left: 1rem;
+}
+
 
