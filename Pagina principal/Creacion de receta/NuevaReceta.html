@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Receta</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="NuevaReceta.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Crear Nueva Receta</h1>
+        <form>
+            <div class="form-group">
+                <label for="imageLink">Link de la Imagen</label>
+                <input type="url" class="form-control" id="imageLink" placeholder="Ingrese el link de la imagen" required>
+            </div>
+            <div class="form-group">
+                <label for="recipeName">Nombre de la Receta</label>
+                <input type="text" class="form-control" id="recipeName" placeholder="Ingrese el nombre de la receta" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Breve Descripción</label>
+                <textarea class="form-control" id="description" rows="3" placeholder="Ingrese una breve descripción" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="recipe">Receta</label>
+                <textarea class="form-control" id="recipe" rows="5" placeholder="Ingrese la receta" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>Características Nutricionales</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="highProtein">
+                    <label class="form-check-label" for="highProtein">Alto en Proteína</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="lowCarbs">
+                    <label class="form-check-label" for="lowCarbs">Bajo en Carbohidratos</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="lactoseFree">
+                    <label class="form-check-label" for="lactoseFree">Sin Lactosa</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="celiacFriendly">
+                    <label class="form-check-label" for="celiacFriendly">Apto Celíacos</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="veganFriendly">
+                    <label class="form-check-label" for="veganFriendly">Apto Veganos</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="calories">Cantidad de Calorías</label>
+                <input type="number" class="form-control" id="calories" placeholder="Ingrese la cantidad de calorías" required>
+            </div>
+            <div class="form-group">
+                <label for="prepTime">Tiempo de Preparación (minutos)</label>
+                <input type="number" class="form-control" id="prepTime" placeholder="Ingrese el tiempo de preparación" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Crear Receta</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
