@@ -90,51 +90,6 @@ def buscar_receta_nombre():
         print('Error', error)
         return jsonify({'Mensaje': 'Error'}), 500       
 
-# URL -> Te devuelve segun los filtros aplicados, la/s receta/s.
-@app.route('/recetas/filtro/', methods=['GET'])
-def filtrar_recetas():
-    try:
-        data = request.args
-        # Consulta acumulativa.
-        query = Receta.query
-        if data.get('calorias'):
-            query = query.filter(Receta.calorias <= data.get('calorias'))
-        if data.get('dificultad'):
-            query = query.filter((Receta.dificultad) == data.get('dificultad').lower())
-        if data.get('tiempo_preparacion'):
-            query = query.filter((Receta.tiempo_preparacion) < data.get('tiempo_preparacion'))
-        if data.get('tipo_plato'):
-            query = query.filter((Receta.tipo_plato) == data.get('tipo_plato').lower())
-        if data.get('apto_vegano'):
-            query = query.filter((Receta.apto_vegano) == data.get('apto_vegano'))
-        if data.get('apto_vegetariano'):
-            query = query.filter((Receta.apto_vegetariano) == data.get('apto_vegetariano'))
-        if data.get('apto_celiaco'):
-            query = query.filter((Receta.apto_celiaco) == data.get('apto_celiaco'))
-        if data.get('apto_diabetico'):
-            query = query.filter((Receta.apto_diabetico) == data.get('apto_diabetico'))
-        if data.get('apto_lactosa'):
-            query = query.filter((Receta.apto_lactosa) == data.get('apto_vegetariano'))
-        if data.get('apto_keto'):
-            query = query.filter((Receta.apto_keto) == data.get('apto_keto'))
-        recetas = query.all()
-        
-        datos_receta = []
-        for receta in recetas:
-            dato_receta = {
-                'id':receta.id,
-                'nombre':receta.nombre,
-                'imagen':receta.imagen,
-            }
-            datos_receta.append(dato_receta)
-        if datos_receta == []:
-            return jsonify({'Mensaje': 'Los filtros aplicados no coinciden con alguna receta'}), 200
-        else:
-            return jsonify({'recetas': datos_receta}), 200
-    except Exception as error:
-        print('Error', error)
-        return jsonify({'Mensaje': 'Error'}), 500
-
 # URL -> Te devuelve el id de una receta de manera random.
 @app.route('/recetas/random/', methods=['GET'])
 def recetas_random():
