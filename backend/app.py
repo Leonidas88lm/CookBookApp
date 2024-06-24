@@ -65,30 +65,7 @@ def receta(id_receta):
         return jsonify({'receta': dato_receta}), 200
     except Exception as error:
         print('Error', error)
-        return jsonify({'Mensaje': 'La receta no existe'}), 200
-
-# URL -> Te devuelve segun la busqueda, la/s receta/s.
-@app.route('/recetas/busqueda/', methods=['GET'])
-def buscar_receta_nombre():
-    try:
-        datos_receta = []
-        nombre_buscado = request.args.get('nombre')
-        recetas = Receta.query.all() 
-        for receta in recetas:
-            if nombre_buscado.lower() in receta.nombre.lower():
-                dato_receta = {
-                    'id':receta.id,
-                    'nombre':receta.nombre,
-                    'imagen':receta.imagen,
-                }
-                datos_receta.append(dato_receta)
-        if recetas == []:
-            return jsonify({'Mensaje': 'La receta no existe'}), 200
-        else:
-            return jsonify({'recetas': datos_receta}), 200
-    except Exception as error:
-        print('Error', error)
-        return jsonify({'Mensaje': 'Error'}), 500       
+        return jsonify({'Mensaje': 'La receta no existe'}), 200    
 
 # URL -> Te devuelve el id de una receta de manera random.
 @app.route('/recetas/random/', methods=['GET'])
