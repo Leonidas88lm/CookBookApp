@@ -229,6 +229,57 @@ def editar_receta(id_receta):
         return jsonify({'message': 'Internal server error'}), 500
 
 
+# URL -> Te devuelve el id de un usuario.
+@app.route('/usuario/', methods=['POST'])
+def usuario():
+    try:
+        data = request.json
+        nombre = data.get('nombre')
+        contraseña = data.get('contraseña')
+
+        usuario = Usuario.query.where(
+            Usuario.nombre == nombre,
+            Usuario.contraseña == contraseña
+        ).first()
+
+        if usuario:
+            return jsonify({'exito': True, 'id_usuario': usuario.id}), 200
+        else:
+            return jsonify({'mensaje': 'El usuario ingresado no existe.'}), 200
+    except Exception as error:
+        print('Error', error)
+        return jsonify({'Mensaje': 'Error'}), 500
+
+# URL -> Crea un usuario .  
+@app.route('/usuarios/crear', methods=['POST'])
+def nuevo_usuario():
+    minCaracteresContra = 8
+    minCaracteresNombre = 5
+    maxCaracteres = 16
+    try:
+        data = request.json
+        nombre = data.get('nombre')
+        contraseña = data.get('contraseña')
+
+        if Usuario.query.filter_by(nombre=nombre).first():
+            return jsonify({'mensaje': 'El nombre de usuario ya existe'}), 400
+        if len(nombre) < minCaracteresNombre or len(nombre) > maxCaracteres:
+            return jsonify({'mensaje': "El nombre debe contener entre {} y {} caracteres".format(minCaracteresNombre, maxCaracteres)}), 400
+        if len(contraseña) < minCaracteresContra or len(nombre) > maxCaracteres:
+            return jsonify({'mensaje': "La contraseña debe contener entre {} y {} caracteres".format(minCaracteresContra, maxCaracteres)}), 400
+
+        nuevo_usuario = Usuario(
+            nombre = data.get('nombre'),
+            contraseña = data.get('contraseña')
+        )
+        db.session.add(nuevo_usuario)
+        db.session.commit()
+        return jsonify({'exito': True, 'mensaje': 'Usuario creado con exito', 'id': nuevo_usuario.id}), 201
+    except Exception as error:
+        print('Error', error)
+        return jsonify({'mensaje': 'error'}), 404
+
+
 if __name__ == '__main__':
     print('Starting server...')
     db.init_app(app)
