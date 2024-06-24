@@ -33,7 +33,8 @@ def recetas():
             dato_receta = {
                 'id':receta.id,
                 'nombre':receta.nombre,
-                'imagen':receta.imagen,
+                'descripcion':receta.descripcion, 
+                'imagen':receta.imagen
             }
             datos_receta.append(dato_receta)
         return jsonify({'recetas': datos_receta}), 200
@@ -49,23 +50,23 @@ def receta(id_receta):
         dato_receta = {
             'id':receta.id,
             'nombre':receta.nombre,
+            'descripcion':receta.descripcion,
             'imagen':receta.imagen,
-            'instruccion':receta.instruccion,
+            'video':receta.video,
+            'ingredientes':receta.ingredientes,
+            'receta':receta.receta,
             'calorias':receta.calorias,
-            'dificultad':receta.dificultad,
             'tiempo_preparacion':receta.tiempo_preparacion,
-            'tipo_plato':receta.tipo_plato,
+            'alto_proteinas':receta.alto_proteinas,
+            'bajo_carbohidratos':receta.bajo_carbohidratos,
             'apto_vegano':receta. apto_vegano,
-            'apto_vegetariano':receta.apto_vegetariano, 
-            'apto_celiaco':receta.apto_celiaco,
-            'apto_diabetico':receta.apto_diabetico,  
+            'apto_celiaco':receta.apto_celiaco, 
             'apto_lactosa':receta.apto_lactosa, 
-            'apto_keto':receta.apto_keto, 
         }
         return jsonify({'receta': dato_receta}), 200
     except Exception as error:
         print('Error', error)
-        return jsonify({'Mensaje': 'La receta no existe'}), 200    
+        return jsonify({'Mensaje': 'La receta no existe'}), 200 
 
 # URL -> Te devuelve el id de una receta de manera random.
 @app.route('/recetas/random/', methods=['GET'])
@@ -97,18 +98,18 @@ def nueva_receta():
         data = request.json
         nueva_receta = Receta(
             nombre = data.get('nombre'),
+            descripcion = data.get('descripcion'),
             imagen = data.get('imagen'),
-            instruccion = data.get('instruccion'),
+            video = data.get('video'),
+            ingredientes = data.get('ingredientes'),
+            receta = data.get('receta'),
             calorias = data.get('calorias'),
-            dificultad = data.get('dificultad'),
             tiempo_preparacion = data.get('tiempo_preparacion'),
-            tipo_plato = data.get('tipo_plato'),
+            alto_proteinas = data.get('alto_proteinas'),
+            bajo_carbohidratos = data.get('bajo_carbohidratos'),
             apto_vegano = data.get('apto_vegano'),
-            apto_vegetariano = data.get('apto_vegetariano'), 
-            apto_celiaco = data.get('apto_celiaco'),
-            apto_diabetico = data.get('apto_diabetico'),  
-            apto_lactosa = data.get('apto_lactosa'), 
-            apto_keto = data.get('apto_keto')
+            apto_celiaco = data.get('apto_celiaco'),  
+            apto_lactosa = data.get('apto_lactosa')
         )
         db.session.add(nueva_receta)
         db.session.commit()
@@ -139,19 +140,19 @@ def editar_receta(id_receta):
         data = request.json 
         receta = Receta.query.get(id_receta)
         if receta:
-            receta.nombre = data.get('nombre')
-            receta.imagen = data.get('imagen')
-            receta.instruccion = data.get('instruccion')
-            receta.calorias = data.get('calorias')
-            receta.dificultad = data.get('dificultad')
-            receta.tiempo_preparacion = data.get('tiempo_preparacion')
-            receta.tipo_plato = data.get('tipo_plato')
-            receta.apto_vegano = data.get('apto_vegano')
-            receta.apto_vegetariano = data.get('apto_vegetariano') 
-            receta.apto_celiaco = data.get('apto_celiaco')
-            receta.apto_diabetico = data.get('apto_diabetico') 
+            receta.nombre = data.get('nombre'),
+            receta.descripcion = data.get('descripcion'),
+            receta.imagen = data.get('imagen'),
+            receta.video = data.get('video'),
+            receta.ingredientes = data.get('ingredientes'),
+            receta.receta = data.get('receta'),
+            receta.calorias = data.get('calorias'),
+            receta.tiempo_preparacion = data.get('tiempo_preparacion'),
+            receta.alto_proteinas = data.get('alto_proteinas'),
+            receta.bajo_carbohidratos = data.get('bajo_carbohidratos'),
+            receta.apto_vegano = data.get('apto_vegano'),
+            receta.apto_celiaco = data.get('apto_celiaco'),  
             receta.apto_lactosa = data.get('apto_lactosa')
-            receta.apto_keto = data.get('apto_keto')
             db.session.commit()
             return jsonify({'message': 'Receta actualizada con exito'}), 200
         else:
