@@ -121,10 +121,10 @@ def nueva_receta():
         )
         db.session.add(receta_creada_usuario)
         db.session.commit()
-        return jsonify({'message': 'Receta creada con exito'}), 201
+        return jsonify({'exito': True, 'id_receta': nueva_receta.id}), 201
     except Exception as error:
         print('Error', error)
-        return jsonify({'message': 'Internal server error'}), 500
+        return jsonify({'mensaje': 'Error'}), 500
 
 # URL -> Elimina una receta por id (CURL DELETE).
 @app.route('/recetas/<id_receta>', methods=['DELETE']) 
