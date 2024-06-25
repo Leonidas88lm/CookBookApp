@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from models import db, Receta, Usuario, RecetasFavoritaUsuario, RecetaCreadaUsuario
+from models import db, Receta, Usuario, RecetaCreada
 from sqlalchemy import desc, asc
 import random
 
@@ -112,6 +112,14 @@ def nueva_receta():
             apto_lactosa = data.get('apto_lactosa')
         )
         db.session.add(nueva_receta)
+        db.session.commit()
+
+        id_usuario = data.get('id_usuario')
+        receta_creada_usuario = RecetaCreada(
+            id_usuario = id_usuario,
+            id_receta = nueva_receta.id
+        )
+        db.session.add(receta_creada_usuario)
         db.session.commit()
         return jsonify({'message': 'Receta creada con exito'}), 201
     except Exception as error:
