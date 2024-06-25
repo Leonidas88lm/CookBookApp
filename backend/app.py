@@ -66,7 +66,7 @@ def receta(id_receta):
         return jsonify({'receta': dato_receta}), 200
     except Exception as error:
         print('Error', error)
-        return jsonify({'Mensaje': 'La receta no existe'}), 200 
+        return jsonify({'Mensaje': 'La receta no existe'}), 200
 
 # URL -> Te devuelve el id de una receta de manera random.
 @app.route('/recetas/random/', methods=['GET'])
@@ -91,7 +91,7 @@ def recetas_random():
         print('Error', error)
         return jsonify({'Mensaje': 'La receta no existe'}), 204
 
-# URL -> Crea una receta (CURL POST).
+# URL -> Crea una receta.
 @app.route('/recetas/', methods=['POST'])
 def nueva_receta():
     try:
@@ -121,12 +121,12 @@ def nueva_receta():
         )
         db.session.add(receta_creada_usuario)
         db.session.commit()
-        return jsonify({'message': 'Receta creada con exito'}), 201
+        return jsonify({'exito': True, 'id_receta': nueva_receta.id}), 201
     except Exception as error:
         print('Error', error)
-        return jsonify({'message': 'Internal server error'}), 500
+        return jsonify({'mensaje': 'Error'}), 500
 
-# URL -> Elimina una receta por id (CURL DELETE).
+# URL -> Elimina una receta por id.
 @app.route('/recetas/<id_receta>', methods=['DELETE']) 
 def eliminar_receta(id_receta):
     try:
@@ -134,14 +134,14 @@ def eliminar_receta(id_receta):
         if receta:
             db.session.delete(receta)
             db.session.commit()
-            return jsonify({'message': 'Receta eliminada con exito'}), 200
+            return jsonify({'exito': True}), 200
         else:
-            return jsonify({'message': 'La receta no existe'}), 404
+            return jsonify({'mensaje': 'La receta no existe'}), 404
     except Exception as error:
         print('Error', error)
         return jsonify({'mensaje': 'Error al eliminar receta.'}), 500  
 
-# URL -> Edita una receta por id (CURL PUT).
+# URL -> Edita una receta por id.
 @app.route('/recetas/<id_receta>', methods=['PUT'])
 def editar_receta(id_receta):
     try:
@@ -162,12 +162,12 @@ def editar_receta(id_receta):
             receta.apto_celiaco = data.get('apto_celiaco'),  
             receta.apto_lactosa = data.get('apto_lactosa')
             db.session.commit()
-            return jsonify({'message': 'Receta actualizada con exito'}), 200
+            return jsonify({'exito': True, 'mensaje': 'Receta actualizada con exito'}), 200
         else:
-            return jsonify({'message': 'Receta no encontrada'}), 204
+            return jsonify({'mensaje': 'Receta no encontrada'}), 204
     except Exception as error:
         print('Error', error)
-        return jsonify({'message': 'Internal server error'}), 500
+        return jsonify({'mensaje': 'Error'}), 500
 
 
 # URL -> Te devuelve el id de un usuario.
