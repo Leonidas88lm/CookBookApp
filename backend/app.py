@@ -126,17 +126,26 @@ def nueva_receta():
         print('Error', error)
         return jsonify({'mensaje': 'Error'}), 500
 
-# URL -> Elimina una receta por id.
-@app.route('/recetas/<id_receta>', methods=['DELETE']) 
-def eliminar_receta(id_receta):
+# URL -> Elimina una receta por id segun usuario.
+@app.route('/recetas/<id_receta>/<id_usuario>', methods=['DELETE']) 
+def eliminar_receta(id_receta, id_usuario):
     try:
-        receta = Receta.query.get(id_receta)
-        if receta:
-            db.session.delete(receta)
+        reg_receta_creada = RecetaCreada.query.where(
+            RecetaCreada.id_usuario == id_usuario, 
+            RecetaCreada.id_receta == id_receta
+        ).first()
+
+        if reg_receta_creada:
+            db.session.delete(reg_receta_creada)
             db.session.commit()
-            return jsonify({'exito': True}), 200
-        else:
-            return jsonify({'mensaje': 'La receta no existe'}), 404
+
+            receta = Receta.query.get(id_receta)
+            if receta:
+                db.session.delete(receta)
+                db.session.commit()
+                return jsonify({'exito': True, 'id_receta': id_receta}), 200
+            else:
+                return jsonify({'mensaje': 'La receta no existe'}), 404
     except Exception as error:
         print('Error', error)
         return jsonify({'mensaje': 'Error al eliminar receta.'}), 500  
