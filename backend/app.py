@@ -191,7 +191,7 @@ def usuario():
         print('Error', error)
         return jsonify({'Mensaje': 'Error'}), 500
 
-# URL -> Crea un usuario .  
+# URL -> Crea un usuario.  
 @app.route('/usuarios/crear', methods=['POST'])
 def nuevo_usuario():
     minCaracteresContra = 8
@@ -220,6 +220,25 @@ def nuevo_usuario():
         print('Error', error)
         return jsonify({'mensaje': 'error'}), 404
 
+# URL -> Devuelve las recetas creadas por el usuario.
+@app.route('/usuario/<id_usuario>/recetas/', methods=['GET'])
+def recetas_creadas_por_usuario(id_usuario):
+    try:
+        recetas = Receta.query.join(RecetaCreada).where(RecetaCreada.id_usuario == id_usuario).all()
+        datos_receta = []
+        for receta in recetas:
+            dato_receta = {
+                'id':receta.id,
+                'nombre':receta.nombre
+            }
+            datos_receta.append(dato_receta)
+        if datos_receta == []:
+            return jsonify({'Exito': False, 'Mensaje': 'No se encuentran recetas favoritas'}), 204
+        else:
+            return jsonify({'Exito': True, 'recetas': datos_receta}), 200
+    except Exception as error:
+        print('Error', error)
+        return jsonify({'Mensaje': 'Error'}), 204
 
 if __name__ == '__main__':
     print('Starting server...')
