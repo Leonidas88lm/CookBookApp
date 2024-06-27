@@ -2,14 +2,31 @@ body{
     background: linear-gradient(110.3deg, rgb(238, 179, 123) 8.7%, rgb(216, 103, 77) 47.5%, rgb(114, 43, 54) 89.1%);
     background-size: cover;
     background-position: center;
-
 }
 .recipe-title {
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 5px 10px;
+    border: 2px solid #dee2e6;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    z-index: 1;
     text-align: center;
-    margin-bottom: 10px;
+    width: calc(100% - 4px);
+    margin-bottom: 0;
+}
+.recipe-card {
+    position: relative;
+    margin-top: 30px;
 }
 .card {
-    margin-bottom: 20px;
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background: radial-gradient(circle at 10% 20%, rgb(255, 200, 124) 0%, rgb(252, 251, 121) 90%);
 }
 .navbar-custom {
     background-color: #f8f9fa;
@@ -42,7 +59,6 @@ body{
     border: none;
     color: red;
     font-size: 1.5em;
-    margin-left: 10px; /* Ajusta el margen según sea necesario */
 }
 .dropdown-submenu .dropdown-menu {
     top: 0;
@@ -65,6 +81,7 @@ body{
 .center-logo {
     flex-grow: 1;
     text-align: center;
+    margin-right: 420px;
 }
 .center-logo img {
     max-height: 50px;

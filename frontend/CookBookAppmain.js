@@ -1,13 +1,21 @@
 /*Filtra las tarjetas de recetas basándose en un filtro específico, (filtros: vegano etc...)*/
 function filterRecipes(filter) {
-    const cards = document.querySelectorAll('.recipe-card');
-    cards.forEach(card => {
-        if (card.dataset.filters.includes(filter)) {
-                card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
+    const cards = Array.from(document.querySelectorAll('.recipe-card'));
+
+    let filteredCards = cards.filter(card => card.dataset.filters.includes(filter));
+
+    if (filter.startsWith('calorias_')) {
+        const maxCalories = parseInt(filter.split('_')[1], 10);
+        filteredCards = filteredCards.filter(card => parseInt(card.dataset.calories, 10) <= maxCalories)
+                                     .sort((a, b) => parseInt(b.dataset.calories, 10) - parseInt(a.dataset.calories, 10));
+    } else if (filter.endsWith('_minutos')) {
+        const maxTime = parseInt(filter.split('_')[0], 10);
+        filteredCards = filteredCards.filter(card => parseInt(card.dataset.time, 10) <= maxTime)
+                                     .sort((a, b) => parseInt(b.dataset.time, 10) - parseInt(a.dataset.time, 10));
+    }
+
+    cards.forEach(card => card.style.display = 'none');
+    filteredCards.forEach(card => card.style.display = 'block');
 }
 /*Busca y filtra las tarjetas de recetas basándose en un término de búsqueda, (cuadro de busqueda)*/
 function searchRecipes() {
