@@ -34,7 +34,14 @@ def recetas():
                 'id':receta.id,
                 'nombre':receta.nombre,
                 'descripcion':receta.descripcion, 
-                'imagen':receta.imagen
+                'imagen':receta.imagen,
+                'calorias':receta.calorias,
+                'tiempo_preparacion':receta.tiempo_preparacion,
+                'alto_proteinas':receta.alto_proteinas,
+                'bajo_carbohidratos':receta.bajo_carbohidratos,
+                'apto_vegano':receta. apto_vegano,
+                'apto_celiaco':receta.apto_celiaco, 
+                'apto_lactosa':receta.apto_lactosa
             }
             datos_receta.append(dato_receta)
         return jsonify({'recetas': datos_receta}), 200
