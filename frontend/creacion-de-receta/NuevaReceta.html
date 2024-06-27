@@ -6,70 +6,147 @@
     <title>Crear Receta</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="NuevaReceta.css">
+    
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container my-5">
         <h1 class="text-center mb-4">Crear Nueva Receta</h1>
-        <form>
-            <div class="form-group">
-                <label for="imageLink">Link de la Imagen</label>
-                <input type="url" class="form-control" id="imageLink" placeholder="Ingrese el link de la imagen" required>
-            </div>
+        <form class="p-3" onsubmit="create_recipe(event)">
             <div class="form-group">
                 <label for="recipeName">Nombre de la Receta</label>
-                <input type="text" class="form-control" id="recipeName" placeholder="Ingrese el nombre de la receta" required>
+                <input type="text" class="form-control" name="nombre" id="recipeName" placeholder="Ingrese el nombre de la receta" required>
+            </div>
+            <div class="form-group">
+                <label for="imageLink">Link de la Imagen</label>
+                <input type="url" class="form-control" name="imagen" id="imageLink" placeholder="Ingrese el link de la imagen" required>
+            </div>
+            <div class="form-group">
+                <label for="recipeName">Link del video</label>
+                <input type="text" class="form-control" name="video" id="recipeName" placeholder="Ingrese el nombre de la receta" required>
             </div>
             <div class="form-group">
                 <label for="description">Breve Descripción</label>
-                <textarea class="form-control" id="description" rows="3" placeholder="Ingrese una breve descripción" required></textarea>
+                <textarea class="form-control" name="descripcion" id="descripcion" rows="3" placeholder="Ingrese una breve descripción" required></textarea>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="ingredients">Ingredientes</label>
-                    <textarea class="form-control" id="ingredients" rows="5" placeholder="Ingrese los ingredientes" required></textarea>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="recipe">Receta</label>
-                    <textarea class="form-control" id="recipe" rows="5" placeholder="Ingrese la receta" required></textarea>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <label for="recipe">Ingredientes</label>
+                        <textarea class="form-control" name="ingredientes" id="ingredientes" rows="5" placeholder="Ingrese los ingredientes" required></textarea>
+                    </div>
+                    <div class="col">
+                        <label for="recipe">Preparación</label>
+                        <textarea class="form-control" name="receta" id="preparación" rows="5" placeholder="Ingrese el metodo de preparación" required></textarea>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <label>Características Nutricionales</label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="highProtein">
+                    <input class="form-check-input" type="checkbox" name="alto_proteinas" id="highProtein">
                     <label class="form-check-label" for="highProtein">Alto en Proteína</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="lowCarbs">
+                    <input class="form-check-input" type="checkbox" name="bajo_carbohidratos" id="lowCarbs">
                     <label class="form-check-label" for="lowCarbs">Bajo en Carbohidratos</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="lactoseFree">
-                    <label class="form-check-label" for="lactoseFree">Sin Lactosa</label>
+                    <input class="form-check-input" type="checkbox" name="apto_vegano" id="veganFriendly">
+                    <label class="form-check-label" for="veganFriendly">Apto Veganos</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="celiacFriendly">
+                    <input class="form-check-input" type="checkbox" name="apto_celiaco" id="celiacFriendly">
                     <label class="form-check-label" for="celiacFriendly">Apto Celíacos</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="veganFriendly">
-                    <label class="form-check-label" for="veganFriendly">Apto Veganos</label>
+                    <input class="form-check-input" type="checkbox" name="apto_lactosa" id="lactoseFree">
+                    <label class="form-check-label" for="lactoseFree">Sin Lactosa</label>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="calories">Cantidad de Calorías</label>
-                <input type="number" class="form-control" id="calories" placeholder="Ingrese la cantidad de calorías" required>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="calories">Cantidad de Calorías</label>
+                        <input type="number" class="form-control" name="calorias" id="calories" placeholder="Ingrese la cantidad de calorías" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="prepTime">Tiempo de Preparación (minutos)</label>
+                        <input type="number" class="form-control" name="tiempo_preparacion" id="prepTime" placeholder="Ingrese el tiempo de preparación" required>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="prepTime">Tiempo de Preparación (minutos)</label>
-                <input type="number" class="form-control" id="prepTime" placeholder="Ingrese el tiempo de preparación" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Crear Receta</button>
+            <button type="submit" class="btn btn-warning btn-block boton_crear">Crear Receta</button>
         </form>
     </div>
+    <footer class="">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Inicio</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Contacto</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Política de privacidad</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Términos de servicio</a></li>
+          </ul>
+          <p class="text-center text-light">Las Tres Estrellas © 2024 Company, Inc</p>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+
+        function handle_response(data){
+            if (data.exito){
+                window.location.href = `/receta?id=${data.id_receta}`
+            } else {
+                alert("Error al crear la receta")
+            }
+        }
+
+        function create_recipe(event){
+            event.preventDefault()
+            const formData = new FormData(event.target)
+
+            const nombre = formData.get("nombre")
+            const descripcion = formData.get("descripcion")
+            const imagen = formData.get("imagen")
+            const video = formData.get("video")
+            const ingredientes = formData.get("ingredientes")
+            const receta = formData.get("receta")
+            const calorias = formData.get("calorias")
+            const tiempo_preparacion = formData.get("tiempo_preparacion")
+            
+            const alto_proteinas = document.getElementById('highProtein').checked;
+            const bajo_carbohidratos = document.getElementById('lowCarbs').checked;
+            const apto_vegano = document.getElementById('veganFriendly').checked;
+            const apto_celiaco = document.getElementById('celiacFriendly').checked;
+            const apto_lactosa = document.getElementById('lactoseFree').checked;
+            fetch("http://localhost:5000/recetas",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nombre: nombre,
+                    descripcion: descripcion,
+                    imagen: imagen,
+                    video: video,
+                    ingredientes: ingredientes,
+                    receta: receta,
+                    calorias: calorias,
+                    tiempo_preparacion: tiempo_preparacion,
+                    alto_proteinas: alto_proteinas,
+                    bajo_carbohidratos: bajo_carbohidratos,
+                    apto_vegano: apto_vegano,
+                    apto_celiaco: apto_celiaco,
+                    apto_lactosa: apto_lactosa
+                })
+            })
+            .then((res) => res.json())
+            .then(handle_response)
+            .catch((error) => console.log("Error", error))
+        }   
+    </script>
+          
 </body>
 </html>
-
