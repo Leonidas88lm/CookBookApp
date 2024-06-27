@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Cosas por Hacer</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row mb-4">
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="search" placeholder="Buscar por receta">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary btn-block" id="create">Crear </button>
+            </div>
+        </div>
+        <div class="border p-3">
+            <div id="todo-list">
+                <div class="todo-item mb-3 p-2 border">
+                    <span class="todo-title mr-2">Nombre receta 1</span>
+                    <button class="btn btn-secondary btn-sm mr-2">Editar</button>
+                    <button class="btn btn-danger btn-sm delete">Borrar</button>
+                </div>
+                <div class="todo-item mb-3 p-2 border">
+                    <span class="todo-title mr-2">Nombre receta 2</span>
+                    <button class="btn btn-secondary btn-sm mr-2">Editar</button>
+                    <button class="btn btn-danger btn-sm delete">Borrar</button>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-secondary mt-3" id="back">Atrás</button>
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="recetas-editadas.js"></script>
+</body>
+</html>
+
