@@ -11,6 +11,8 @@ class Receta(db.Model):
     video = db.Column(db.String(255), nullable=False)
     ingredientes = db.Column(db.Text, nullable=False)
     receta = db.Column(db.Text, nullable=False)
+    tipo_receta = db.Column(db.String(100), nullable=False)
+    dificultad = db.Column(db.String(100), nullable=False)
     calorias = db.Column(db.Integer, nullable=False)
     tiempo_preparacion = db.Column(db.Integer, nullable=False) 
     alto_proteinas = db.Column(db.Boolean, nullable=False) 
