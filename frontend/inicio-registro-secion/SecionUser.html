@@ -5,24 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
     <link rel="stylesheet" href="SecionUser.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="SecionUser.css">
+
 </head>
 <body>
-    <div class="login-container">
-        <h2>Inicio de Sesión</h2>
-        <form>
-            <div class="input-group">
-                <label for="username">Nombre de Usuario</label>
-                <input type="text" id="username" name="username" required>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <form onsubmit="iniciar_sesion(event)" class="p-4 p-md-5 my-5 border rounded-3 bg-body-tertiary">
+                    <h1 class="mb-3">Inicio de sesión</h1>
+                    <div class="mb-3">
+                      <label for="correo" class="form-label fw-medium">Nombre de usuario:</label>
+                      <input type="email" name="nombre" class="form-control" id="correo" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="contraseña" class="form-label fw-medium ">Contraseña:</label>
+                      <input type="password" name="contraseña" class="form-control" id="contraseña" required>
+                    </div>
+                    <div class="d-flex justify-content-between"> 
+                            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                            <a href="/CookBookAppmain.html" class="btn btn-danger text-white">Cancelar</a>
+                    </div>
+                    <div class="form-text mt-3 fs-6">¿No tienes una cuenta? <a href="RegisterUser.html" class="text-decoration-none">Registrate ahora mismo</a></div>
+                  </form>
             </div>
-            <div class="input-group">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="button-group">
-                <button type="submit">Iniciar Sesión</button>
-                <button type="button" onclick="location.href='RegisterUser.html'">Registrarse</button>
-            </div>
-        </form>
+        </div>
     </div>
+    <footer class="py-3 mt-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Inicio</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Contacto</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Política de privacidad</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Términos de servicio</a></li>
+          </ul>
+          <p class="text-center text-light">Las Tres Estrellas © 2024 Company, Inc</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+
+      function handle_response(data) {
+          if (data.exito) {
+              if (window.location.pathname.includes("/creacion-de-receta/NuevaReceta.html")) {
+                  // Redirigir a la página de crear receta
+                  window.location.href = "/creacion-de-receta/NuevaReceta.html";
+              } else if (window.location.pathname.includes("/mis-recetas/MisRecetas.html")) {
+                 // Redirigir a la página de mis recetas
+                  window.location.href = `/mis-recetas/MisRecetas.html?usuario=${data.id_usuario}`;
+              } else {
+                  console.error("Página no reconocida");
+              }
+          } else if (data.mensaje) {
+              // Mostrar mensaje de error
+              alert(data.mensaje);
+          } else {
+              console.error("Respuesta inesperada del servidor:", data);
+          }
+      }      
+
+      function iniciar_sesion(event){
+        event.preventDafault();
+        const formData = new FormData(event.target);
+
+        const nombre = formData.get("nombre");
+        const contraseña = formData.get("contraseña");
+        fetch(`http://localhost:5000/usuario/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            nombre: nombre,
+            contraseña: contraseña
+          })
+        })
+        .then((res) => res.json())
+        .then(handle_response)
+        .catch((error) => console.log("Error", error))
+      }
+    </script>
 </body>
 </html>
