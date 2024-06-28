@@ -13,11 +13,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-                <form onsubmit="iniciar_sesion(event)" class="p-4 p-md-5 my-5 border rounded-3 bg-body-tertiary">
+                <form id="form-inicio" onsubmit="iniciar_sesion(event)" class="p-4 p-md-5 my-5 border rounded-3 bg-body-tertiary">
                     <h1 class="mb-3">Inicio de sesión</h1>
                     <div class="mb-3">
                       <label for="username" class="form-label fw-medium">Nombre de usuario:</label>
-                      <input type="email" name="nombre" class="form-control" id="correo" required>
+                      <input type="username" name="nombre" class="form-control" id="nombre" required>
                     </div>
                     <div class="mb-3">
                       <label for="contraseña" class="form-label fw-medium ">Contraseña:</label>
@@ -27,7 +27,7 @@
                             <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                             <a href="/CookBookAppmain.html" class="btn btn-danger text-white">Cancelar</a>
                     </div>
-                    <div class="form-text mt-3 fs-6">¿No tienes una cuenta? <a href="RegisterUser.html" class="text-decoration-none">Registrate ahora mismo</a></div>
+                    <div class="form-text mt-3 fs-6">¿No tienes una cuenta? <a onclick="redireccion_registro()" class="text-decoration-none">Registrate ahora mismo</a></div>
                   </form>
             </div>
         </div>
