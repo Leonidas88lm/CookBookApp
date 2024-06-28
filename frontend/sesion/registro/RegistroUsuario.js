@@ -13,9 +13,6 @@ function handle_response(data) {
     else if (redireccion === "registro-mis-recetas") {
       window.location.href = `/sesion/inicio/SesionUser.html?url=mis-recetas`
     } 
-    else {
-      dato_invalido(data.mensaje)
-    }
   } else {
     console.error("Respuesta inesperada del servidor:", data);
   }
