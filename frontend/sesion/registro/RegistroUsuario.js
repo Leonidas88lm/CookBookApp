@@ -10,7 +10,7 @@ function handle_response(data) {
     if (redireccion === "registro-crear-receta") {
       window.location.href = `/sesion/inicio/SesionUser.html?url=crear-receta`
     }
-    else if (data.exito && redireccion === "registro-mis-recetas") {
+    else if (redireccion === "registro-mis-recetas") {
       window.location.href = `/sesion/inicio/SesionUser.html?url=mis-recetas`
     } 
     else {
