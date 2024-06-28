@@ -70,13 +70,13 @@ function crear_usuario(event){
     return longitudValida && tieneMayuscula && tieneMinuscula && tieneNumero && tieneSimbolo;
 }
 
-function validarNombreUsuario(nombre) {
+function ValidarNombreUsuario(nombre) {
   const longitudValida = nombre.length >= MIN_CARACTERES && contraseña.length <= MAX_CARACTERES_NOMBRE;
   return longitudValida;
 }
 
 function MensajeDatosInvalidos(mensaje) {
-  let form = document.getElementById("form")
+  let form = document.getElementById("form-registro")
   if (form.querySelector("span") == null) {
       let aviso = document.createElement("span")
       aviso.setAttribute("id", "aviso")
@@ -84,4 +84,8 @@ function MensajeDatosInvalidos(mensaje) {
   } 
   aviso = document.getElementById("aviso")
   aviso.innerText = "*" + mensaje.toLowerCase()
+}
+
+function redireccion_inicio_sesion() {
+  window.location.href = `/sesion/inicio/InicioUsuario.html?url=${redireccion}`
 }

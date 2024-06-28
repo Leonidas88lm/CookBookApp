@@ -52,6 +52,6 @@ function datos_ingresados_incorrectamente() {
 }
 
 function redireccion_registro() {
-    window.location.href = `/sesion/registro/RegistroUsuario.html?url=registro-${redireccion}`
+    window.location.href = `/sesion/registro/RegistroUsuario.html?url=${redireccion}`
 }
 
