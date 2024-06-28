@@ -30,7 +30,7 @@ function parse_data(contenido) {
         boton_edit.textContent = "Editar"
         boton_edit.setAttribute("class", "btn btn-secondary btn-sm mr-2")
         boton_edit.onclick = function () { 
-            window.location.href=`/mis-recetas/editar/EditarReceta.html?id_receta=${recetas[index].id}&id_usuario=${id_usuario}` 
+            window.location.href=`/mis-recetas/editar-recetas/EditarReceta.html?id_receta=${recetas[index].id}&id_usuario=${id_usuario}` 
         }
 
         item.append(nombre)
