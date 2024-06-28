@@ -2,19 +2,18 @@ const parametros_URL = new URLSearchParams(window.location.search);
 const redireccion = parametros_URL.get("url");
 
 function handle_response(data) {
-    if (data.exito)
+    if (data.exito) {
         if (redireccion === "crear-receta") {
             window.location.href = `/creacion-de-receta/NuevaReceta.html?id_usuario=${data.id_usuario}`
         }
         else if (data.exito && redireccion === "mis-recetas") {
             window.location.href = `/mis-recetas/MisRecetas.html?id_usuario=${data.id_usuario}`
         } 
-        else {
-            datos_ingresados_incorrectamente()
-        }
+    }
     else {
-        console.error("Respuesta inesperada del servidor:", data);
-    } 
+        datos_ingresados_incorrectamente()
+    }
+
 }
 
 function iniciar_sesion(event) {
