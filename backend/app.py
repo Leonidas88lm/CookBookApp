@@ -170,20 +170,20 @@ def editar_receta(id_receta):
         data = request.json 
         receta = Receta.query.get(id_receta)
         if receta:
-            receta.nombre = data.get('nombre'),
-            receta.descripcion = data.get('descripcion'),
-            receta.imagen = data.get('imagen'),
-            receta.video = data.get('video'),
-            receta.tipo_receta = data.get('tipo_receta'),
-            receta.dificultad = data.get('dificultad'),
-            receta.ingredientes = data.get('ingredientes'),
-            receta.receta = data.get('receta'),
-            receta.calorias = data.get('calorias'),
-            receta.tiempo_preparacion = data.get('tiempo_preparacion'),
-            receta.alto_proteinas = data.get('alto_proteinas'),
-            receta.bajo_carbohidratos = data.get('bajo_carbohidratos'),
-            receta.apto_vegano = data.get('apto_vegano'),
-            receta.apto_celiaco = data.get('apto_celiaco'),  
+            receta.nombre = data.get('nombre')
+            receta.descripcion = data.get('descripcion')
+            receta.imagen = data.get('imagen')
+            receta.video = data.get('video')
+            receta.tipo_receta = data.get('tipo_receta')
+            receta.dificultad = data.get('dificultad')
+            receta.ingredientes = data.get('ingredientes')
+            receta.receta = data.get('receta')
+            receta.calorias = data.get('calorias')
+            receta.tiempo_preparacion = data.get('tiempo_preparacion')
+            receta.alto_proteinas = data.get('alto_proteinas')
+            receta.bajo_carbohidratos = data.get('bajo_carbohidratos')
+            receta.apto_vegano = data.get('apto_vegano')
+            receta.apto_celiaco = data.get('apto_celiaco')  
             receta.apto_lactosa = data.get('apto_lactosa')
             db.session.commit()
             return jsonify({'exito': True, 'mensaje': 'Receta actualizada con exito'}), 200
