@@ -218,9 +218,9 @@ def usuario():
 # URL -> Crea un usuario.  
 @app.route('/usuarios/crear', methods=['POST'])
 def nuevo_usuario():
-    minCaracteresContra = 8
-    minCaracteresNombre = 5
-    maxCaracteres = 16
+    minCaracteres = 4
+    maxCaracteresContra = 16
+    maxCaracteresNombre = 12
     try:
         data = request.json
         nombre = data.get('nombre')
@@ -228,10 +228,10 @@ def nuevo_usuario():
 
         if Usuario.query.filter_by(nombre=nombre).first():
             return jsonify({'mensaje': 'El nombre de usuario ya existe'}), 400
-        if len(nombre) < minCaracteresNombre or len(nombre) > maxCaracteres:
-            return jsonify({'mensaje': "El nombre debe contener entre {} y {} caracteres".format(minCaracteresNombre, maxCaracteres)}), 400
-        if len(contraseña) < minCaracteresContra or len(nombre) > maxCaracteres:
-            return jsonify({'mensaje': "La contraseña debe contener entre {} y {} caracteres".format(minCaracteresContra, maxCaracteres)}), 400
+        if len(nombre) < minCaracteres or len(nombre) > maxCaracteresNombre:
+            return jsonify({'mensaje': "El nombre debe contener entre {} y {} caracteres".format(minCaracteres, maxCaracteresNombre)}), 400
+        if len(contraseña) < minCaracteres or len(nombre) > maxCaracteresContra:
+            return jsonify({'mensaje': "La contraseña debe contener entre {} y {} caracteres".format(minCaracteres, maxCaracteresContra)}), 400
 
         nuevo_usuario = Usuario(
             nombre = data.get('nombre'),
