@@ -30,7 +30,7 @@ function parse_data(contenido) {
         boton_edit.textContent = "Editar"
         boton_edit.setAttribute("class", "btn btn-secondary btn-sm mr-2")
         boton_edit.onclick = function () { 
-            window.location.href=`/mis-recetas/editar-recetas/EditarReceta.html?id_receta=${recetas[index].id}&id_usuario=${id_usuario}` 
+            window.location.href=`/mis-recetas/editar/EditarReceta.html?id_receta=${recetas[index].id}&id_usuario=${id_usuario}` 
         }
 
         item.append(nombre)
@@ -72,9 +72,9 @@ function remover_receta(id_receta) {
         .then((res) => res.json())
         .then(delete_response)
         .catch(handle_error)
-    }
+}
 
-    
+ 
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search');
     const todoList = document.getElementById('todo-list');
@@ -99,3 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function redireccion_crear_recetas() {
+    window.location.href = `/creacion-de-receta/NuevaReceta.html?id_usuario=${id_usuario}`
+}
