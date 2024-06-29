@@ -17,3 +17,7 @@ label {
     font-weight: bold;
 }
 
+#aviso {
+    color: red;
+    font-size: 90%;
+}
