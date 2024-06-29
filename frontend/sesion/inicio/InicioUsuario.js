@@ -11,7 +11,7 @@ function handle_response(data) {
         } 
     }
     else {
-        datos_ingresados_incorrectamente()
+        datos_ingresados_invalidos()
     }
 
 }
@@ -38,15 +38,11 @@ function iniciar_sesion(event) {
         .catch((error) => console.log("ERROR", error))
 }
 
-function datos_ingresados_incorrectamente() {
-    let form = document.getElementById("form-inicio")
+function datos_ingresados_invalidos() {
+    let aviso = document.getElementById("aviso")
     let input_password = document.getElementById("contraseña")
-
-    if (form.querySelector("span") == null) {
-        let mensaje = document.createElement("span")
-        mensaje.innerText = "*el nombre o contraseña ingresados son incorrectos."
-        form.append(mensaje)
-    }
+    aviso.innerText = ''
+    aviso.innerText = "*el nombre o contraseña ingresados son incorrectos."
     input_password.value = ''
 }
 
