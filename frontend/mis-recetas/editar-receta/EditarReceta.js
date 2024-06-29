@@ -5,20 +5,23 @@ if (id_receta === null || id_usuario === null) {
     window.location.href = `/`
 }
 
+
 function handle_get_response(data) {
-    document.getElementById("recipeName").value = data.receta.nombre
-    document.getElementById("description").value = data.receta.descripcion
-    document.getElementById("imageLink").value = data.receta.imagen
-    document.getElementById("videoLink").value = data.receta.video
-    document.getElementById("ingredients").value = data.receta.ingredientes
-    document.getElementById("recipe").value = data.receta.receta
-    document.getElementById("calories").value = data.receta.calorias
-    document.getElementById("prepTime").value = data.receta.tiempo_preparacion
-    document.getElementById("highProtein").checked = data.receta.alto_proteinas
-    document.getElementById("lowCarbs").checked = data.receta.bajo_carbohidratos
-    document.getElementById("veganFriendly").checked = data.receta.apto_vegano
-    document.getElementById("celiacFriendly").checked = data.receta.apto_celiaco
-    document.getElementById("lactoseFree").checked = data.receta.apto_lactosa
+    document.getElementById("nombre").value = data.receta.nombre
+    document.getElementById("descripcion").value = data.receta.descripcion
+    document.getElementById("imagen").value = data.receta.imagen
+    document.getElementById("video").value = data.receta.video
+    document.getElementById("ingredientes").value = data.receta.ingredientes
+    document.getElementById("receta").value = data.receta.receta
+    document.getElementById("calorias").value = data.receta.calorias
+    document.getElementById("tiempo_preparacion").value = data.receta.tiempo_preparacion
+    //document.getElementById("tipo_plato").value = data.receta.tipo_plato   
+    //document.getElementById("dificultad").value = data.receta.dificultad   
+    document.getElementById("alto_proteinas").checked = data.receta.alto_proteinas
+    document.getElementById("bajo_carbohidratos").checked = data.receta.bajo_carbohidratos
+    document.getElementById("apto_vegano").checked = data.receta.apto_vegano
+    document.getElementById("apto_celiaco").checked = data.receta.apto_celiaco
+    document.getElementById("apto_lactosa").checked = data.receta.apto_lactosa
 }
 
 fetch(`http://localhost:5000/recetas/${id_receta}`)
@@ -26,9 +29,9 @@ fetch(`http://localhost:5000/recetas/${id_receta}`)
     .then(handle_get_response)
     .catch((error) => console.log("ERROR", error))
 
-  
-    
+
 function handle_response(data) {
+    alert(data.mensaje)
     if (data.exito) {
         window.location.href = `/mis-recetas/MisRecetas.html?id_usuario=${id_usuario}`
     } else {
@@ -39,19 +42,21 @@ function handle_response(data) {
 function edit_receta(event) {
     event.preventDefault()
     const formData = new FormData(event.target)
-    const nombre = formData.get("name")
-    const descripcion = formData.get("description")
-    const imagen = formData.get("imageLink")
-    const video = formData.get("videoLink")
-    const ingredientes = formData.get("ingredients")
-    const receta = formData.get("recipe")
-    const calorias = formData.get("calories")
-    const tiempo_preparacion = formData.get("prepTime")
-    const alto_proteinas = formData.get("highProtein") ? true : false
-    const bajo_carbohidratos = formData.get("lowCarbs") ? true : false
-    const apto_vegano = formData.get("veganFriendly") ? true : false
-    const apto_celiaco = formData.get("celiacFriendly") ? true : false
-    const apto_lactosa = formData.get("lactoseFree") ? true : false
+    const nombre = formData.get("nombre")
+    const descripcion = formData.get("descripcion")
+    const imagen = formData.get("imagen")
+    const video = formData.get("video")
+    const ingredientes = formData.get("ingredientes")
+    const receta = formData.get("receta")
+    const tipo_receta = "modificar"
+    const dificultad = "modificar"
+    const calorias = formData.get("calorias")
+    const tiempo_preparacion = formData.get("tiempo_preparacion")
+    const alto_proteinas = formData.get("alto_proteinas") ? true : false
+    const bajo_carbohidratos = formData.get("bajo_carbohidratos") ? true : false
+    const apto_vegano = formData.get("apto_vegano") ? true : false
+    const apto_celiaco = formData.get("apto_celiaco") ? true : false
+    const apto_lactosa = formData.get("apto_lactosa") ? true : false
 
     fetch(`http://localhost:5000/recetas/${id_receta}`, {
         method: "PUT",
@@ -60,11 +65,13 @@ function edit_receta(event) {
         },
         body: JSON.stringify({
             nombre: nombre,
+            descripcion: descripcion,
             imagen: imagen,
             video: video,
-            descripcion: descripcion,
             ingredientes: ingredientes,
             receta: receta,
+            tipo_receta: tipo_receta,
+            dificultad: dificultad,
             calorias: calorias,
             tiempo_preparacion: tiempo_preparacion,
             alto_proteinas: alto_proteinas,
@@ -74,7 +81,7 @@ function edit_receta(event) {
             apto_lactosa: apto_lactosa
         })
     })
-        .then((res) => res.json())
-        .then(handle_response)
-        .catch((error) => console.log("ERROR", error))
+    .then((res) => res.json())
+    .then(handle_response)
+    .catch((error) => console.log("ERROR", error))
 }
