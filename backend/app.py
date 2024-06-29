@@ -245,7 +245,7 @@ def nuevo_usuario():
         return jsonify({'mensaje': 'error'}), 404
 
 # URL -> Devuelve las recetas creadas por el usuario.
-@app.route('/usuario/<id_usuario>/recetas/', methods=['GET'])
+@app.route('/usuarios/<id_usuario>/recetas/', methods=['GET'])
 def recetas_creadas_por_usuario(id_usuario):
     try:
         recetas = Receta.query.join(RecetaCreada).where(RecetaCreada.id_usuario == id_usuario).all()
@@ -257,9 +257,9 @@ def recetas_creadas_por_usuario(id_usuario):
             }
             datos_receta.append(dato_receta)
         if datos_receta == []:
-            return jsonify({'Exito': False, 'Mensaje': 'No se encuentran recetas favoritas'}), 204
+            return jsonify({'exito': False, 'mensaje': 'No se encuentran recetas favoritas'}), 204
         else:
-            return jsonify({'Exito': True, 'recetas': datos_receta}), 200
+            return jsonify({'exito': True, 'recetas': datos_receta}), 200
     except Exception as error:
         print('Error', error)
         return jsonify({'Mensaje': 'Error'}), 204
