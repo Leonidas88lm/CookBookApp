@@ -1,3 +1,9 @@
+const parametros_URL = new URLSearchParams(window.location.search)
+const id_usuario = parametros_URL.get("id_usuario")
+if (id_usuario === null) {
+    window.location.href = `/`
+}
+
 function handle_response(data){
     if (data.exito){
         window.location.href = `/receta?id=${data.id_receta}`
@@ -7,11 +13,6 @@ function handle_response(data){
 }
 
 function create_recipe(event){
-    const parametros_URL = new URLSearchParams(window.location.search)
-    const id_usuario = parametros_URL.get("id_usuario")
-    if (id_usuario === null) {
-        window.location.href = `/`
-    }
     event.preventDefault()
     const formData = new FormData(event.target)
     const nombre = formData.get("nombre")
@@ -20,22 +21,23 @@ function create_recipe(event){
     const video = formData.get("video")
     const ingredientes = formData.get("ingredientes")
     const receta = formData.get("receta")
-    const tipo_receta = formData.get("tipo_receta")
-    const dificultad = formData.get("dificultad")
+    const tipo_receta = "modificar"
+    const dificultad = "modificar"
     const calorias = formData.get("calorias")
     const tiempo_preparacion = formData.get("tiempo_preparacion")
-    const alto_proteinas = formData.get("highProtein") ? true : false
-    const bajo_carbohidratos = formData.get("lowCarbs") ? true : false
-    const apto_vegano = formData.get("veganFriendly") ? true : false
-    const apto_celiaco = formData.get("celiacFriendly") ? true : false
-    const apto_lactosa = formData.get("lactoseFree") ? true : false
+    const alto_proteinas = formData.get("alto_proteinas") ? true : false
+    const bajo_carbohidratos = formData.get("bajo_carbohidratos") ? true : false
+    const apto_vegano = formData.get("apto_vegano") ? true : false
+    const apto_celiaco = formData.get("apto_celiaco") ? true : false
+    const apto_lactosa = formData.get("apto_lactosa") ? true : false
 
-    fetch("http://localhost:5000/recetas",{
+    fetch("http://localhost:5000/recetas/",{
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
+            id_usuario: id_usuario,
             nombre: nombre,
             descripcion: descripcion,
             imagen: imagen,
