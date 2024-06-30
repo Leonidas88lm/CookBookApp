@@ -30,18 +30,6 @@ function searchRecipes() {
         }
     });
 }
-/*Configura un evento de clic en las imágenes de las tarjetas de recetas para mostrar un modal con la imagen y el título de la receta usando jquery,
- (hace la imagen mas grande pera mejor visualisacion)*/
-$(document).ready(function() {
-    $('.recipe-card .card-img-top').on('click', function() {
-        var imgSrc = $(this).attr('src');
-        var title = $(this).closest('.recipe-card').find('.recipe-title').text();
-        
-        $('#modalImage').attr('src', imgSrc);
-        $('#recipeModalLabel').text(title);
-        $('#recipeModal').modal('show');
-    });
-});
 
 
 //funcion para recopilar los filtros que posee una receta:
