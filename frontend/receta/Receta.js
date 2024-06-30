@@ -4,7 +4,6 @@ const id = parametros.get("id");
 if (id === null) {
     window.location.href = "/CookBookAppmain.html";
 }
-document.getElementById("btnEditar").setAttribute("href", `/receta/?id=${id}`)//en el "href" colocar la ubicacion del archivo html que es para editar las recetas.
 
 function respuesta_recibida(respuesta){
     return respuesta.json()
