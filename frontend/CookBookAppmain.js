@@ -1,19 +1,7 @@
 /*Filtra las tarjetas de recetas basándose en un filtro específico, (filtros: vegano etc...)*/
 function filterRecipes(filter) {
     const cards = Array.from(document.querySelectorAll('.recipe-card'));
-
     let filteredCards = cards.filter(card => card.dataset.filters.includes(filter));
-
-    if (filter.startsWith('calorias_')) {
-        const maxCalories = parseInt(filter.split('_')[1], 10);
-        filteredCards = filteredCards.filter(card => parseInt(card.dataset.calories, 10) <= maxCalories)
-                                     .sort((a, b) => parseInt(b.dataset.calories, 10) - parseInt(a.dataset.calories, 10));
-    } else if (filter.endsWith('_minutos')) {
-        const maxTime = parseInt(filter.split('_')[0], 10);
-        filteredCards = filteredCards.filter(card => parseInt(card.dataset.time, 10) <= maxTime)
-                                     .sort((a, b) => parseInt(b.dataset.time, 10) - parseInt(a.dataset.time, 10));
-    }
-
     cards.forEach(card => card.style.display = 'none');
     filteredCards.forEach(card => card.style.display = 'block');
 }
@@ -89,6 +77,43 @@ function construirFiltros(receta) {
         filters += " sin_lactosa";
     }
 
+    // Filtros basados en las calorías
+    if (receta.calorias >= 1 && receta.calorias <= 100) {
+        filters += " calorias_100";
+    }
+    else if (receta.calorias > 100 && receta.calorias <= 500) {
+        filters += " calorias_500";
+    }
+    else if (receta.calorias > 500 && receta.calorias <= 1000) {
+        filters += " calorias_1000";
+    }
+    else if (receta.calorias > 1000 && receta.calorias <= 2000) {
+        filters += " calorias_2000";
+    }
+    else if (receta.calorias > 2000 && receta.calorias <= 3000) {
+        filters += " calorias_3000";
+    }
+
+    // Filtros basados en tiempo de preparacion
+    if (receta.tiempo_preparacion >= 1 && receta.tiempo_preparacion <= 10) {
+        filters += " 10_minutos";
+    }
+    else if (receta.tiempo_preparacion > 10 && receta.tiempo_preparacion <= 20) {
+        filters += " 20_minutos";
+    }
+    else if (receta.tiempo_preparacion > 20 && receta.tiempo_preparacion <= 40) {
+        filters += " 40_minutos";
+    }
+    else if (receta.tiempo_preparacion > 40 && receta.tiempo_preparacion <= 60) {
+        filters += " 60_minutos";
+    }
+    else if (receta.tiempo_preparacion > 60 && receta.tiempo_preparacion <= 90) {
+        filters += " 90_minutos";
+    }
+    else if (receta.tiempo_preparacion > 90 && recetas.tiempo_preparacion <=120) {
+        filters += " 120_minutos";
+    }
+
     return filters.trim(); // Devuelve los filtros sin espacios al inicio o al final
 }
 
@@ -104,54 +129,9 @@ function contenido_respuesta(contenido){
         const item = document.createElement("div")
         item.setAttribute("class", "col-md-4 recipe-card ")
 
-        switch (contenido.recetas[index].calorias) {            
-            case 100:
-                item.setAttribute("data-calories", "100");
-                break;
-            case 500:
-                item.setAttribute("data-calories", "500");
-                break;
-            case 1000:
-                item.setAttribute("data-calories", "1000");
-                break;
-            case 2000:
-                item.setAttribute("data-calories", "2000");
-                break;
-            case 3000:
-                item.setAttribute("data-calories", "3000");
-                break;
-            default:
-                break;
-        }
-
         const filters = construirFiltros(contenido.recetas[index]);
         if (filters !== "") {
             item.setAttribute("data-filters", filters);
-        }
-
-
-        const tiempo_preparacion = contenido.recetas[index].tiempo_preparacion;
-
-        switch (tiempo_preparacion) {
-            case 10:
-            case 20:
-            case 40:
-            case 60:
-            case 90:
-            case 120:
-                item.setAttribute("data-time", tiempo_preparacion.toString());
-
-                const valor_tiempo_preparacion = tiempo_preparacion.toString();
-                let filters = item.getAttribute("data-filters");
-
-                if (!filters.includes(`${valor_tiempo_preparacion}_minutos`)) {
-                    filters += ` ${valor_tiempo_preparacion}_minutos`;
-                    item.setAttribute("data-filters", filters.trim());
-                }
-                break;
-            default:
-                // Manejar caso por defecto si es necesario
-                break;
         }
 
         const name = document.createElement("h5");

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Receta</title>
+    <title>Crear Receta</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="NuevaReceta.css">
 </head>
 <body>
     <div class="container my-5">
-        <h1 class="text-center mb-4">Editar Receta</h1>
-        <form class="p-3" onsubmit="edit_receta(event)">
+        <h1 class="text-center mb-4">Crear Receta</h1>
+        <form class="p-3" onsubmit="create_recipe(event)">
             <div class="form-group">
                 <label for="recipeName">Nombre de la Receta</label>
                 <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese el nombre de la receta" required>
@@ -77,8 +77,8 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-warning btn-block boton_crear">Editar Receta</button>
-            <button type="button" class="btn btn-danger btn-block boton_cancelar">Cancelar</button>
+            <button type="submit" class="btn btn-warning btn-block boton_crear">Crear Receta</button>
+            <a type="button" class="btn btn-danger btn-block boton_cancelar" href="/CookBookAppmain.html">Cancelar</a>
         </form>
     </div>
     <footer class="">

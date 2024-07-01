@@ -31,7 +31,6 @@ fetch(`http://localhost:5000/recetas/${id_receta}`)
 
 
 function handle_response(data) {
-    alert(data.mensaje)
     if (data.exito) {
         window.location.href = `/mis-recetas/MisRecetas.html?id_usuario=${id_usuario}`
     } else {
@@ -84,4 +83,8 @@ function edit_receta(event) {
     .then((res) => res.json())
     .then(handle_response)
     .catch((error) => console.log("ERROR", error))
+}
+
+function redireccion_mis_recetas() {
+    window.location.href = `/mis-recetas/MisRecetas.html?id_usuario=${id_usuario}`
 }
