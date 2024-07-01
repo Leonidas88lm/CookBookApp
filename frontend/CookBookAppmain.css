@@ -1,4 +1,4 @@
-body{
+body {
     background: linear-gradient(110.3deg, rgb(238, 179, 123) 8.7%, rgb(216, 103, 77) 47.5%, rgb(114, 43, 54) 89.1%);
     background-size: cover;
     background-position: center;
@@ -11,22 +11,14 @@ body{
     background: white;
     padding: 5px 10px;
     border: 2px solid #dee2e6;
-    border-bottom: none;
-    border-radius: 5px 5px 0 0;
+    border-radius: 20px ;
     z-index: 1;
     text-align: center;
     width: calc(100% - 4px);
     margin-bottom: 0;
 }
-.recipe-card {
-    position: relative;
-    margin-top: 30px;
-}
 .card {
-    margin-top: 0;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    background: radial-gradient(circle at 10% 20%, rgb(255, 200, 124) 0%, rgb(252, 251, 121) 90%);
+    margin-bottom: 20px;
 }
 .navbar-custom {
     background-color: #f8f9fa;
@@ -41,7 +33,6 @@ body{
 .navbar-custom .navbar-nav .nav-link {
     color: #343a40;
 }
-
 .spacer {
     margin-top: 30px;
 }
@@ -73,7 +64,6 @@ body{
 .dropdown-submenu:hover .dropdown-menu {
     display: block;
 }
-
 /* Colorear nombres al pasar el mouse */
 .dropdown-item:hover, .dropdown-submenu:hover > .dropdown-item {
     color: blue;
@@ -86,7 +76,6 @@ body{
 .center-logo img {
     max-height: 50px;
 }
-
 .navbar-brand, .nav-link {
     margin-top: 0; /* Eliminar márgenes superiores para ajustar el menú */
 }
@@ -98,4 +87,36 @@ body{
     margin-left: 1rem;
 }
 
-
+footer {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+}
+.recipe-card {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.recipe-title {
+    color: #333; /* Color de título */
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.card {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: lightyellow
+}
+.card-img-top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.card-body {
+    background: radial-gradient(circle at 10% 20%, rgb(255, 200, 124) 0%, rgb(252, 251, 121) 90%); /*color del card-body*/
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.card-text {
+    color: #4d4d4d; /* Color de texto de la tarjeta */
+}
