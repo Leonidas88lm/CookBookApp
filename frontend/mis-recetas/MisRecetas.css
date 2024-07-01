@@ -1,3 +1,17 @@
+body {
+    background-image: url("https://cdn.pixabay.com/photo/2017/05/19/01/26/presentation-of-2325209_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: aliceblue;
+}
+.container {
+    max-width: 650px;
+    background-color: rgba(14, 13, 13, 0.8); /* Este asigne color de transparencia */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 .todo-item {
     display: flex;
     align-items: center;
@@ -9,6 +23,6 @@
 .todo-item button {
     margin-left: 5px;
 }
-.btn btn-secondary{
-    margin-top: 20px;
+.form-control{
+    background-color: rgb(14, 13, 13);
 }
