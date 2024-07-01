@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Receta</title>
+    <title>Editar Receta</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="NuevaReceta.css">
-    
 </head>
 <body>
     <div class="container my-5">
-        <h1 class="text-center mb-4">Crear Nueva Receta</h1>
-        <form class="p-3" onsubmit="create_recipe(event)">
+        <h1 class="text-center mb-4">Editar Receta</h1>
+        <form class="p-3" onsubmit="edit_receta(event)">
             <div class="form-group">
                 <label for="recipeName">Nombre de la Receta</label>
                 <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese el nombre de la receta" required>
@@ -78,7 +77,8 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-warning btn-block boton_crear">Crear Receta</button>
+            <button type="submit" class="btn btn-warning btn-block boton_crear">Editar Receta</button>
+            <button type="button" class="btn btn-danger btn-block boton_cancelar">Cancelar</button>
         </form>
     </div>
     <footer class="">
@@ -93,7 +93,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="NuevaReceta.js"></script>
-          
+    <scipt src="NuevaReceta.js"></scipt>
 </body>
 </html>
