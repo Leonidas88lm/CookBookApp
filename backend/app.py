@@ -35,7 +35,7 @@ def recetas():
                 'nombre':receta.nombre,
                 'descripcion':receta.descripcion, 
                 'imagen':receta.imagen,
-                'tipo_receta':receta.tipo_receta,
+                'tipo_plato':receta.tipo_plato,
                 'dificultad':receta.dificultad,
                 'calorias':receta.calorias,
                 'tiempo_preparacion':receta.tiempo_preparacion,
@@ -62,7 +62,7 @@ def receta(id_receta):
             'descripcion':receta.descripcion,
             'imagen':receta.imagen,
             'video':receta.video,
-            'tipo_receta':receta.tipo_receta,
+            'tipo_plato':receta.tipo_plato,
             'dificultad':receta.dificultad,
             'ingredientes':receta.ingredientes,
             'receta':receta.receta,
@@ -112,7 +112,7 @@ def nueva_receta():
             descripcion = data.get('descripcion'),
             imagen = data.get('imagen'),
             video = data.get('video'),
-            tipo_receta = data.get('tipo_receta'),
+            tipo_plato = data.get('tipo_plato'),
             dificultad = data.get('dificultad'),
             ingredientes = data.get('ingredientes'),
             receta = data.get('receta'),
@@ -174,7 +174,7 @@ def editar_receta(id_receta):
             receta.descripcion = data.get('descripcion')
             receta.imagen = data.get('imagen')
             receta.video = data.get('video')
-            receta.tipo_receta = data.get('tipo_receta')
+            receta.tipo_plato = data.get('tipo_plato')
             receta.dificultad = data.get('dificultad')
             receta.ingredientes = data.get('ingredientes')
             receta.receta = data.get('receta')
