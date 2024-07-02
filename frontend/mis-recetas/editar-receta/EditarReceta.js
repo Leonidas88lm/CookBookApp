@@ -15,8 +15,8 @@ function handle_get_response(data) {
     document.getElementById("receta").value = data.receta.receta
     document.getElementById("calorias").value = data.receta.calorias
     document.getElementById("tiempo_preparacion").value = data.receta.tiempo_preparacion
-    //document.getElementById("tipo_plato").value = data.receta.tipo_plato   
-    //document.getElementById("dificultad").value = data.receta.dificultad   
+    document.getElementById("tipo_plato").value = data.receta.tipo_receta
+    document.getElementById("dificultad").value = data.receta.dificultad   
     document.getElementById("alto_proteinas").checked = data.receta.alto_proteinas
     document.getElementById("bajo_carbohidratos").checked = data.receta.bajo_carbohidratos
     document.getElementById("apto_vegano").checked = data.receta.apto_vegano
@@ -47,8 +47,8 @@ function edit_receta(event) {
     const video = formData.get("video")
     const ingredientes = formData.get("ingredientes")
     const receta = formData.get("receta")
-    const tipo_receta = "modificar"
-    const dificultad = "modificar"
+    const tipo_plato = formData.get("tipo_plato")
+    const dificultad = formData.get("dificultad")
     const calorias = formData.get("calorias")
     const tiempo_preparacion = formData.get("tiempo_preparacion")
     const alto_proteinas = formData.get("alto_proteinas") ? true : false
@@ -69,7 +69,7 @@ function edit_receta(event) {
             video: video,
             ingredientes: ingredientes,
             receta: receta,
-            tipo_receta: tipo_receta,
+            tipo_plato: tipo_plato,
             dificultad: dificultad,
             calorias: calorias,
             tiempo_preparacion: tiempo_preparacion,
