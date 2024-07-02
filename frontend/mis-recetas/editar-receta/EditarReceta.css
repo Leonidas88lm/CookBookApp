@@ -24,6 +24,7 @@ label {
 .form-control{
     border-radius: 8px;
     border-width: 1px;
+    border-color: rgb(66, 62, 62);
     background-color: black;
 }
 
@@ -41,7 +42,6 @@ textarea {
 }
 
 .boton_cancelar {
-    background-color: red;
+    background-color: orangered;
     color: white;
 }
-

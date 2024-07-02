@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Receta</title>
+    <title>Editar Receta</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="NuevaReceta.css">
 </head>
 <body>
     <div class="container my-5">
-        <h1 class="text-center mb-4">Crear Receta</h1>
-        <form class="p-3" onsubmit="create_recipe(event)">
+        <h1 class="text-center mb-4">Editar Receta</h1>
+        <form class="p-3" onsubmit="edit_receta(event)">
             <div class="form-group">
                 <label for="recipeName">Nombre de la Receta</label>
                 <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese el nombre de la receta" required>
@@ -39,6 +39,29 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="form-group">
+                <label for="dificultad">Dificultad</label>
+                <select class="form-control" name="dificultad" id="dificultad" required>
+                    <option value="">Seleccione la dificultad</option>
+                    <option value="fácil">Fácil</option>
+                    <option value="medio">Medio</option>
+                    <option value="difícil">Difícil</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tipo_plato">Tipo de Plato</label>
+                <select class="form-control" name="tipo_plato" id="tipo_plato" required>
+                    <option value="">Seleccione el tipo de plato</option>
+                    <option value="plato_principal">Plato Principal</option>
+                    <option value="acompañamiento">Acompañamiento</option>
+                    <option value="salsa">Salsa</option>
+                    <option value="postre">Postre</option>
+                    <option value="bebida">Bebida</option>
+                </select>
+            </div>
+
             <div class="form-group">
                 <label>Características Nutricionales</label><br>
                 <div class="form-check form-check-inline">
@@ -77,8 +100,8 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-warning btn-block boton_crear">Crear Receta</button>
-            <a type="button" class="btn btn-danger btn-block boton_cancelar" href="/CookBookAppmain.html">Cancelar</a>
+            <button type="submit" class="btn btn-warning btn-block boton_crear">Editar Receta</button>
+            <button type="button" class="btn btn-danger btn-block boton_cancelar" onclick="redireccion_mis_recetas()">Cancelar</button>
         </form>
     </div>
     <footer class="">
@@ -87,12 +110,12 @@
             <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Contacto</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Política de privacidad</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Términos de servicio</a></li>
-          </ul>
-          <p class="text-center text-light">Las Tres Estrellas © 2024 Company, Inc</p>
+        </ul>
+        <p class="text-center text-light">Las Tres Estrellas © 2024 Company, Inc</p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <scipt src="NuevaReceta.js"></scipt>
+    <script src="NuevaReceta.js"></script>
 </body>
 </html>
