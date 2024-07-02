@@ -21,7 +21,6 @@ function crear_usuario(event){
   const nombre = formData.get("nombre")
   const contraseña = formData.get("contraseña_registro")
   const contraseña_confirmacion = formData.get("contraseña_registro_confirmacion")
-  alert(contraseña != contraseña_confirmacion)
 
   if (!ValidarContraseña(contraseña)) {
     let mensaje = "La contraseña debe tener entre 4 y 16 caracteres, incluir al menos una letra mayúscula, una letra minúscula, un número y un símbolo."
