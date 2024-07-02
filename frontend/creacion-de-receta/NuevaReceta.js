@@ -1,12 +1,13 @@
 const parametros_URL = new URLSearchParams(window.location.search)
 const id_usuario = parametros_URL.get("id_usuario")
+const redireccion = parametros_URL.get("url")
 if (id_usuario === null) {
     window.location.href = `/`
 }
 
 function handle_response(data){
     if (data.exito){
-        window.location.href = `/receta?id=${data.id_receta}`
+        window.location.href = `/receta/Receta.html?id=${data.id_receta}`
     } else {
         alert("Error al crear la receta")
     }
@@ -21,8 +22,8 @@ function create_recipe(event){
     const video = formData.get("video")
     const ingredientes = formData.get("ingredientes")
     const receta = formData.get("receta")
-    const tipo_receta = "modificar"
-    const dificultad = "modificar"
+    const tipo_plato = formData.get("tipo_plato")
+    const dificultad = formData.get("dificultad")
     const calorias = formData.get("calorias")
     const tiempo_preparacion = formData.get("tiempo_preparacion")
     const alto_proteinas = formData.get("alto_proteinas") ? true : false
@@ -44,7 +45,7 @@ function create_recipe(event){
             video: video,
             ingredientes: ingredientes,
             receta: receta,
-            tipo_receta: tipo_receta,
+            tipo_plato: tipo_plato,
             dificultad: dificultad,
             calorias: calorias,
             tiempo_preparacion: tiempo_preparacion,
@@ -59,3 +60,10 @@ function create_recipe(event){
     .then(handle_response)
     .catch((error) => console.log("Error", error))
 }
+
+function redireccion_segun_url() {
+    if (redireccion == "mis-recetas") 
+        window.location.href = `/mis-recetas/MisRecetas.html?id_usuario=${id_usuario}`
+    else 
+        window.location.href = '/CookBookAppmain.html'
+}   
