@@ -26,34 +26,76 @@ function contenido_respuesta(contenido){
 
     const etiquetas = document.getElementById("etiquetas");
 
+//Tipo de plato: Plato principal, Acompañamiento, Salsa, Postre, Bebida.
+    function crearEtiquetaTipoPlato(tipoPlato) {
+        const tipo_plato = document.createElement("li");
+    
+        switch (tipoPlato) {
+            case "Plato principal":
+                tipo_plato.innerText = "Plato principal";
+                break;
+            case "Acompañamiento":
+                tipo_plato.innerText = "Acompañamiento";
+                break;
+            case "Salsa":
+                tipo_plato.innerText = "Salsa";
+                break;
+            case "Postre":
+                tipo_plato.innerText = "Postre";
+                break;
+            case "Bebida":
+                tipo_plato.innerText = "Bebida";
+                break;
+            default:
+		//Si no coincide con ningun caso, salimos de la funcion
+                return;
+        }
+    
+        tipo_plato.setAttribute("class", "etiquetas-estilos");
+        etiquetas.append(tipo_plato);
+    }
+    
+    // Uso de la función crearEtiquetaTipoPlato()
+    const tipoPlato = contenido.receta.tipo_plato;
+    crearEtiquetaTipoPlato(tipoPlato);
+
+//Dificultad: Facil, Medio, Dificil.
+    function crearEtiquetaDificultad(dificultadReceta) {
+        const dificultad = document.createElement("li");
+    
+        switch (dificultadReceta) {
+            case "Facil":
+                dificultad.innerText = "Fácil";
+                break;
+            case "Medio":
+                dificultad.innerText = "Medio";
+                break;
+            case "Dificil":
+                dificultad.innerText = "Difícil";
+                break;
+            // Si no coincide con ningún caso, salimos de la función
+            default:
+                return;
+        }
+        // Si llega hasta aquí es porque se encontró un caso válido
+        dificultad.setAttribute("class", "etiquetas-estilos");
+        etiquetas.append(dificultad);
+    }
+    
+    // Uso de la función crearEtiquetaDificultad()
+    const dificultadReceta = contenido.receta.dificultad;
+    crearEtiquetaDificultad(dificultadReceta);
+
+
+//Filtros: Alto en proteinas, Bajo en carbohidratos, Apto vegano, Apto celiaco y Apto lactosa.
     function crearEtiqueta(texto) {
         const etiqueta = document.createElement("li");
         etiqueta.innerText = texto;
         etiqueta.setAttribute("class", "etiquetas-estilos");
         etiquetas.append(etiqueta);
-    }
+    }    
 
-    //tipo de plato: Plato principal, Acompañamiento, Salsa, Postre, Bebida.
-    if (contenido.receta.tipo_plato == "plato_principal")
-        crearEtiqueta("Plato principal")
-    else if (contenido.receta.tipo_plato == "acompañamiento")
-        crearEtiqueta("Acompañamiento")
-    else if (contenido.receta.tipo_plato == "salsa")
-        crearEtiqueta("Salsa")
-    else if (contenido.receta.tipo_plato == "postre")
-        crearEtiqueta("Postre")
-
-    //Dificultad: Facil, Medio, Dificil.
-    const dificultad = document.createElement("li");
-
-    if (contenido.receta.dificultad == "facil")
-        crearEtiqueta("Fácil") 
-    else if (contenido.receta.dificultad == "medio")
-        crearEtiqueta("Medio")
-    else 
-        crearEtiqueta("Dificil")
-
-    //apto, alto, bajo.
+    //Uso de la funcion crearEtiqueta()
     if (contenido.receta.alto_proteinas)
         crearEtiqueta("Alto en proteínas");
     if (contenido.receta.bajo_carbohidratos)
