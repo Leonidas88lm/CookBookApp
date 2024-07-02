@@ -101,5 +101,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function redireccion_crear_recetas() {
-    window.location.href = `/creacion-de-receta/NuevaReceta.html?id_usuario=${id_usuario}`
+    window.location.href = `/creacion-de-receta/NuevaReceta.html?&url=mis-recetas&id_usuario=${id_usuario}`
 }
