@@ -15,7 +15,7 @@ function handle_get_response(data) {
     document.getElementById("receta").value = data.receta.receta
     document.getElementById("calorias").value = data.receta.calorias
     document.getElementById("tiempo_preparacion").value = data.receta.tiempo_preparacion
-    document.getElementById("tipo_plato").value = data.receta.tipo_receta
+    document.getElementById("tipo_plato").value = data.receta.tipo_plato
     document.getElementById("dificultad").value = data.receta.dificultad   
     document.getElementById("alto_proteinas").checked = data.receta.alto_proteinas
     document.getElementById("bajo_carbohidratos").checked = data.receta.bajo_carbohidratos
