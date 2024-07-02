@@ -16,7 +16,6 @@ function contenido_respuesta(contenido){
     const image = document.getElementById("image");
     image.setAttribute("src", contenido.receta.imagen);
 
-
     const calorias = document.getElementById("calorias");
     calorias.innerText = "Calorias: "+ contenido.receta.calorias;
 
@@ -25,70 +24,44 @@ function contenido_respuesta(contenido){
 
     const etiquetas = document.getElementById("etiquetas");
 
-//tipo de plato: Plato principal, Acompañamiento, Salsa, Postre, Bebida.
-    const tipo_receta = document.createElement("li");
-
-    if (contenido.receta.tipo_receta == "Plato principal"){
-        tipo_receta.innerText = "Plato principal";
-        tipo_receta.setAttribute("class", "etiquetas-estilos");
-        etiquetas.append(tipo_receta);
-    } else if (contenido.receta.tipo_receta == "Acompañamiento"){
-        tipo_receta.innerText = "Acompañamiento";
-        tipo_receta.setAttribute("class", "etiquetas-estilos");
-        etiquetas.append(tipo_receta);
-    } else if (contenido.receta.tipo_receta == "Salsa"){
-        tipo_receta.innerText = "Salsa";
-        tipo_receta.setAttribute("class", "etiquetas-estilos");
-        etiquetas.append(tipo_receta);
-    } else if (contenido.receta.tipo_receta == "Postre"){
-        tipo_receta.innerText = "Postre";
-        tipo_receta.setAttribute("class", "etiquetas-estilos");
-        etiquetas.append(tipo_receta);
-    } else {
-        tipo_receta.innerText = "Bebida";
-        tipo_receta.setAttribute("class", "etiquetas-estilos");
-        etiquetas.append(tipo_receta);
-    } 
-
-//Dificultad: Facil, Medio, Dificil.
-    const dificultad = document.createElement("li");
-
-    if (contenido.receta.dificultad == "Facil"){
-        dificultad.innerText = "Fácil";
-        dificultad.setAttribute("class", "etiquetas-estilos");
-        etiquetas.append(dificultad);
-    } else if (contenido.receta.dificultad == "Medio"){
-        dificultad.innerText = "Medio";
-        dificultad.setAttribute("class", "etiquetas-estilos");
-        etiquetas.append(dificultad);
-    } else {
-        dificultad.innerText = "Difícil"
-        dificultad.setAttribute("class", "etiquetas-estilos");
-        etiquetas.append(dificultad);
-    }
-
-
     function crearEtiqueta(texto) {
         const etiqueta = document.createElement("li");
         etiqueta.innerText = texto;
         etiqueta.setAttribute("class", "etiquetas-estilos");
         etiquetas.append(etiqueta);
     }
-    if (contenido.receta.alto_proteinas) {
+
+    //tipo de plato: Plato principal, Acompañamiento, Salsa, Postre, Bebida.
+    if (contenido.receta.tipo_plato == "plato_principal")
+        crearEtiqueta("Plato principal")
+    else if (contenido.receta.tipo_plato == "acompañamiento")
+        crearEtiqueta("Acompañamiento")
+    else if (contenido.receta.tipo_plato == "salsa")
+        crearEtiqueta("Salsa")
+    else if (contenido.receta.tipo_plato == "postre")
+        crearEtiqueta("Postre")
+
+    //Dificultad: Facil, Medio, Dificil.
+    const dificultad = document.createElement("li");
+
+    if (contenido.receta.dificultad == "facil")
+        crearEtiqueta("Fácil") 
+    else if (contenido.receta.dificultad == "medio")
+        crearEtiqueta("Medio")
+    else 
+        crearEtiqueta("Dificil")
+
+    //apto, alto, bajo.
+    if (contenido.receta.alto_proteinas)
         crearEtiqueta("Alto en proteínas");
-    }
-    if (contenido.receta.bajo_carbohidratos) {
+    if (contenido.receta.bajo_carbohidratos)
         crearEtiqueta("Bajo en carbohidratos");
-    }
-    if (contenido.receta.apto_vegano) {
+    if (contenido.receta.apto_vegano)
         crearEtiqueta("Apto vegano");
-    }
-    if (contenido.receta.apto_celiaco) {
+    if (contenido.receta.apto_celiaco)
         crearEtiqueta("Apto celiaco");
-    }
-    if (contenido.receta.apto_lactosa) {
-        crearEtiqueta("Apto lactosa");
-    }       
+    if (contenido.receta.apto_lactosa)
+        crearEtiqueta("Apto lactosa");       
 
     const descripcion = document.getElementById("descripcion");
     descripcion.innerText = contenido.receta.descripcion;
