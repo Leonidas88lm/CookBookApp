@@ -24,6 +24,23 @@ function contenido_respuesta(contenido){
     tiempo_preparacion.innerText = "Tiempo de preparación: " + contenido.receta.tiempo_preparacion +" min";
 
     const etiquetas = document.getElementById("etiquetas");
+    
+    //Dificultad: Facil, Medio, Dificil.
+    const dificultad = document.createElement("li");
+    if (contenido.receta.dificultad == "Facil"){
+        dificultad.innerText = "Fácil";
+        dificultad.setAttribute("class", "etiquetas-estilos");
+        etiquetas.append(dificultad);
+    } else if (contenido.receta.dificultad == "Medio"){
+        dificultad.innerText = "Medio";
+        dificultad.setAttribute("class", "etiquetas-estilos");
+        etiquetas.append(dificultad);
+    } else {
+        dificultad.innerText = "Difícil"
+        dificultad.setAttribute("class", "etiquetas-estilos");
+        etiquetas.append(dificultad);
+    }
+
 
     function crearEtiqueta(texto) {
         const etiqueta = document.createElement("li");
