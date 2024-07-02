@@ -23,42 +23,29 @@ function searchRecipes() {
 //funcion para recopilar los filtros que posee una receta:
 function construirFiltros(receta) {
     let filters = "";
-
+    
     // Filtros basados en la dificultad
-    switch (receta.dificultad) {
-        case "Facil":
-            filters += " Facil";
-            break;
-        case "Medio":
-            filters += " Medio";
-            break;
-        case "Dificil":
-            filters += " Dificil";
-            break;
-        default:
-            break;
-    }
+    if (receta.dificultad == "facil") 
+        filters += " Facil"
+    else if (receta.dificultad == "medio") 
+        filters += " Medio"
+    else if (receta.dificultad == "dificil") 
+        filters += " Dificil"
+
 
     // Filtros basados en el tipo de receta (tipo de plato)
-    switch (receta.tipo_receta) {
-        case "Plato principal":
-            filters += " Plato_principal";
-            break;
-        case "Acompañamiento":
-            filters += " Acompañamiento";
-            break;
-        case "Salsa":
-            filters += " Salsa";
-            break;
-        case "Postre":
-            filters += " Postre";
-            break;
-        case "Bebida":
-            filters += " Bebida";
-            break;
-        default:
-            break;
-    }
+    console.log(receta.tipo_plato == "plato_principal")
+    if (receta.tipo_plato == "plato_principal") 
+        filters += " Plato_principal"
+    else if (receta.tipo_plato == "acompañamiento") 
+        filters += " Acompañamiento"
+    else if (receta.tipo_plato == "salsa") 
+        filters += " Salsa"
+    else if (receta.tipo_plato == "postre") 
+        filters += " Postre"
+    else if (receta.tipo_plato == "bebida") 
+        filters += " Bebida"
+
 
     // Filtros adicionales basados en propiedades booleanas
     if (receta.alto_proteinas) {
