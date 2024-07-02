@@ -21,11 +21,17 @@ label {
 .form-check-label {
     margin-right: 10px;
 }
+
+.form-control, .form-control:focus, textarea, textarea:focus {
+    background-color: black;
+    color: white;
+    border-color: #ced4da;
+    box-shadow: none; /* Eliminar el efecto de sombra al enfocar */
+}
+
 .form-control{
     border-radius: 8px;
     border-width: 1px;
-    border-color: rgb(66, 62, 62);
-    background-color: black;
 }
 
 footer {
