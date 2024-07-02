@@ -24,9 +24,35 @@ function contenido_respuesta(contenido){
     tiempo_preparacion.innerText = "Tiempo de preparación: " + contenido.receta.tiempo_preparacion +" min";
 
     const etiquetas = document.getElementById("etiquetas");
-    
-    //Dificultad: Facil, Medio, Dificil.
+
+//tipo de plato: Plato principal, Acompañamiento, Salsa, Postre, Bebida.
+    const tipo_receta = document.createElement("li");
+
+    if (contenido.receta.tipo_receta == "Plato principal"){
+        tipo_receta.innerText = "Plato principal";
+        tipo_receta.setAttribute("class", "etiquetas-estilos");
+        etiquetas.append(tipo_receta);
+    } else if (contenido.receta.tipo_receta == "Acompañamiento"){
+        tipo_receta.innerText = "Acompañamiento";
+        tipo_receta.setAttribute("class", "etiquetas-estilos");
+        etiquetas.append(tipo_receta);
+    } else if (contenido.receta.tipo_receta == "Salsa"){
+        tipo_receta.innerText = "Salsa";
+        tipo_receta.setAttribute("class", "etiquetas-estilos");
+        etiquetas.append(tipo_receta);
+    } else if (contenido.receta.tipo_receta == "Postre"){
+        tipo_receta.innerText = "Postre";
+        tipo_receta.setAttribute("class", "etiquetas-estilos");
+        etiquetas.append(tipo_receta);
+    } else {
+        tipo_receta.innerText = "Bebida";
+        tipo_receta.setAttribute("class", "etiquetas-estilos");
+        etiquetas.append(tipo_receta);
+    } 
+
+//Dificultad: Facil, Medio, Dificil.
     const dificultad = document.createElement("li");
+
     if (contenido.receta.dificultad == "Facil"){
         dificultad.innerText = "Fácil";
         dificultad.setAttribute("class", "etiquetas-estilos");
