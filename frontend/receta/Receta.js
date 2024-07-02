@@ -1,5 +1,7 @@
 const parametros = new URLSearchParams(window.location.search);
-const id = parametros.get("id");        
+const id = parametros.get("id");   
+const id_usuario = parametros.get("id_usuario")     
+const redireccio = parametros.get("url")     
 
 if (id === null) {
     window.location.href = "/CookBookAppmain.html";
@@ -84,3 +86,10 @@ fetch(`http://localhost:5000/recetas/${id}`)
     .then(respuesta_recibida)
     .then(contenido_respuesta)
     .catch(handle_error)
+
+function redireccio_recetas() {
+    if (redireccio == "mis-recetas")
+        window.location.href = `/mis-recetas/MisRecetas.html?id_usuario=${id_usuario}`
+    else
+        window.location.href = "/CookBookAppmain.html"
+}
