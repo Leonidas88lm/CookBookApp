@@ -17,8 +17,10 @@ function parse_data(contenido) {
         item.setAttribute("id", `${recetas[index].id}`)
         item.setAttribute("class", "todo-item mb-3 p-2 border")
 
-        let nombre = document.createElement("span")
-        nombre.setAttribute("class", "todo-title mr-2")
+        let nombre = document.createElement("a")
+        nombre.setAttribute("class", "text-light mr-2")
+        nombre.setAttribute("style", "cursor:pointer")
+        nombre.setAttribute("href", `/receta/Receta.html?url=mis-recetas&id_usuario=${id_usuario}&id=${contenido.recetas[index].id}`);
         nombre.innerText = recetas[index].nombre
 
         let boton_remover = document.createElement("button")
