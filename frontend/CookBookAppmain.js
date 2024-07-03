@@ -164,3 +164,23 @@ fetch("http://localhost:5000/recetas/")
 .then(respuesta_recibida)
 .then(contenido_respuesta)
 .catch(respuesta_error)
+
+function redireccion_receta_random() {
+    
+    function respuesta_recibida(respuesta){
+        return respuesta.json();
+    }
+
+    function contenido_respuesta(contenido){
+        window.location.href = `/receta/Receta.html?id=${contenido.recetas.id}`
+    }
+
+    function respuesta_error(error){
+        console.log("Error");
+        console.log(error);
+    }
+    fetch("http://localhost:5000/recetas/random/")
+    .then(respuesta_recibida)
+    .then(contenido_respuesta)
+    .catch(respuesta_error)
+}
