@@ -1,5 +1,6 @@
 body {
-    background-image: url("https://cdn.pixabay.com/photo/2017/05/19/01/26/presentation-of-2325209_1280.jpg");
+    background-image: url("https://images.pexels.com/photos/7372078/pexels-photo-7372078.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1");
+    background-position: center calc(24% - 20px);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
