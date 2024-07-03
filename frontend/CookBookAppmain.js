@@ -66,7 +66,7 @@ function construirFiltros(receta) {
 
     // Filtros basados en las calorías
     if (receta.calorias >= 1 && receta.calorias <= 100) {
-        filters += " calorias_100";
+        filters += " calorias_99";
     }
     else if (receta.calorias > 100 && receta.calorias <= 500) {
         filters += " calorias_500";
