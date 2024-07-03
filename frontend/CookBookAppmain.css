@@ -1,5 +1,6 @@
 body {
-    background-image: url(https://static.vecteezy.com/system/resources/previews/000/127/178/large_2x/food-vector-pattern.jpg);
+    background-image:  url(https://static.vecteezy.com/system/resources/previews/000/127/178/large_2x/food-vector-pattern.jpg);
+    background-color: black;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed; 
@@ -10,6 +11,14 @@ body {
 }
 .card {
     margin-bottom: 20px;
+    background-color: #eaeef1;
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+    transform: scale(1.02);
+    border: solid rgba(0, 0, 0, 0.180) 1px;
 }
 .navbar-custom {
     background-color: #f8f9fa;
@@ -31,8 +40,8 @@ body {
         linear-gradient(to bottom, rgba(255, 255, 255, 0.050), rgba(255, 255, 255, 0.129) 50%, rgba(255, 255, 255, 0.050));
     margin-top: 30px;
     padding: 40px;
-    backdrop-filter: blur(3px); 
-    -webkit-backdrop-filter: blur(3px);     
+    backdrop-filter: blur(2.5px); 
+    -webkit-backdrop-filter: blur(3px);    
 }
 .nav-item:hover {
     background-color: #007bff;
@@ -86,11 +95,6 @@ footer {
     color: #333; /* Color de título */
     font-size: 1.2rem;
     margin-bottom: 10px;
-}
-.card {
-    background-color: #eef1f3;
-    padding: 15px;
-    border-radius: 8px;
 }
 .card-img-top {
     border-top-left-radius: 8px;
