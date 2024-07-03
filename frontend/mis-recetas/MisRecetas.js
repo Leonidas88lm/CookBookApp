@@ -22,23 +22,27 @@ function parse_data(contenido) {
         nombre.setAttribute("style", "cursor:pointer")
         nombre.setAttribute("href", `/receta/Receta.html?url=mis-recetas&id_usuario=${id_usuario}&id=${contenido.recetas[index].id}`);
         nombre.innerText = recetas[index].nombre
+        
+	let botones = document.createElement("div")
+	botones.setAttribute("class", "ml-auto")
 
         let boton_remover = document.createElement("button")
         boton_remover.textContent = "Borrar"
-        boton_remover.setAttribute("class", "btn btn-secondary btn-sm mr-2")
+        boton_remover.setAttribute("class", "btn btn-danger btn-sm mr-2")
         boton_remover.onclick = function () {remover_receta(`${recetas[index].id}`)}
 
         let boton_edit = document.createElement("button")
         boton_edit.textContent = "Editar"
-        boton_edit.setAttribute("class", "btn btn-secondary btn-sm mr-2")
+        boton_edit.setAttribute("class", "btn btn-warning btn-sm mr-2")
         boton_edit.onclick = function () { 
             window.location.href=`/mis-recetas/editar-receta/EditarReceta.html?id_receta=${recetas[index].id}&id_usuario=${id_usuario}` 
         }
 
-        item.append(nombre)
-        item.append(boton_edit)
-        item.append(boton_remover)
-        listado.append(item)
+        botones.append(boton_edit)
+	botones.append(boton_remover)
+	item.append(nombre)
+	item.append(botones)
+	listado.append(item)
     }
 }
 
