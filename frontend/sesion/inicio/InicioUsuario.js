@@ -50,3 +50,17 @@ function redireccion_registro() {
     window.location.href = `/sesion/registro/RegistroUsuario.html?url=${redireccion}`
 }
 
+document.getElementById('toggle-password').addEventListener('click', function () {
+    const passwordField = document.getElementById('contraseña');
+    const icon = document.getElementById('icon-password');
+    
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        icon.classList.remove('bi-eye-slash');
+        icon.classList.add('bi-eye');
+    } else {
+        passwordField.type = 'password';
+        icon.classList.remove('bi-eye');
+        icon.classList.add('bi-eye-slash');
+    }
+});

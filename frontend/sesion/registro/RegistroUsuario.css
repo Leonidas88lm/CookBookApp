@@ -27,3 +27,8 @@ label {
     color: red;
     font-size: 90%;
 }
+
+.toggle-password{
+    margin-top: 15px;
+    margin-right: 8px;
+}

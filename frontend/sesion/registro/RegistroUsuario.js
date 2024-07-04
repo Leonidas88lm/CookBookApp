@@ -83,3 +83,12 @@ function MensajeDatosInvalidos(mensaje) {
 function redireccion_inicio_sesion() {
   window.location.href = `/sesion/inicio/InicioUsuario.html?url=${redireccion}`
 }
+function togglePassword() {
+    var passwordField = document.getElementById("contraseña_registro");
+    var passwordFieldType = passwordField.getAttribute("type");
+    if (passwordFieldType === "password") {
+        passwordField.setAttribute("type", "text");
+    } else {
+        passwordField.setAttribute("type", "password");
+    }
+}
