@@ -25,11 +25,11 @@ function construirFiltros(receta) {
     let filters = "";
     
     // Filtros basados en la dificultad
-    if (receta.dificultad == "facil") 
+    if (receta.dificultad == "fácil") 
         filters += " Facil"
     else if (receta.dificultad == "medio") 
         filters += " Medio"
-    else if (receta.dificultad == "dificil") 
+    else if (receta.dificultad == "difícil") 
         filters += " Dificil"
 
 
