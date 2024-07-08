@@ -9,7 +9,7 @@ Tecnologías Utilizadas
     Frontend:
         HTML: Estructura del contenido.
         CSS: Estilos y diseño de la página.
-        JavaScript: Interactividad y lógica del lado del cliente.\n
+        JavaScript: Interactividad y lógica del lado del cliente.
     Backend:
         Python: Lenguaje de programación del servidor.
         Flask: Framework web para el desarrollo del servidor.
