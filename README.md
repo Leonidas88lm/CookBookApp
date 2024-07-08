@@ -10,7 +10,6 @@ Tecnologías Utilizadas
         HTML: Estructura del contenido.
         CSS: Estilos y diseño de la página.
         JavaScript: Interactividad y lógica del lado del cliente.
-
     Backend:
         Python: Lenguaje de programación del servidor.
         Flask: Framework web para el desarrollo del servidor.
@@ -48,10 +47,8 @@ La aplicación estará disponible en http://localhost:5000
 Uso:
     Registro e Inicio de Sesión:
         Los usuarios pueden registrarse y acceder a la aplicación usando el formulario de inicio de sesión.
-
     Creación de Recetas:
         Los usuarios autenticados pueden crear nuevas recetas proporcionando un título, ingredientes y pasos de preparación.
-
     Exploración de Recetas:
         Los usuarios pueden explorar recetas publicadas por otros y buscar recetas según sus preferencias.
 
