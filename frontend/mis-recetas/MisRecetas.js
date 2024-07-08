@@ -86,22 +86,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const todoList = document.getElementById('todo-list');
 
     searchInput.addEventListener('input', function() {
-        const searchText = searchInput.value.toLowerCase();
+        const searchText = searchInput.value.trim().toLowerCase();
+
+        // Obtener todas las recetas
         const items = todoList.getElementsByClassName('todo-item');
+
         Array.from(items).forEach(function(item) {
-            const title = item.getElementsByClassName('todo-title')[0].textContent.toLowerCase();
+            const title = item.getElementsByTagName('a')[0].innerText.toLowerCase(); // Obtener el nombre de la receta
+
+            // Mostrar u ocultar la receta según el texto de búsqueda
             if (title.includes(searchText)) {
-                item.style.display = 'flex';
+                item.classList.remove('d-none'); // Mostrar la receta
             } else {
-                item.style.display = 'none';
+                item.classList.add('d-none'); // Ocultar la receta
             }
         });
     });
 
+    // Event listener para el clic en el botón de eliminar receta
     todoList.addEventListener('click', function(event) {
         if (event.target.classList.contains('delete')) {
             const item = event.target.closest('.todo-item');
-            todoList.removeChild(item);
+            item.remove(); // Eliminar el elemento de la lista
         }
     });
 });
