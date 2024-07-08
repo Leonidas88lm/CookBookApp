@@ -53,16 +53,14 @@ function crear_usuario(event){
   .catch((error) => console.log("Error", error))
 }
 
+function ValidarContraseña(contraseña) {
+  const longitudValida = contraseña.length >= MIN_CARACTERES && contraseña.length <= MAX_CARACTERES_CONTRASEÑA
+  const tieneMayuscula = /[A-Z]/.test(contraseña)
+  const tieneMinuscula = /[a-z]/.test(contraseña)
+  const tieneNumero = /\d/.test(contraseña)
+  const tieneSimbolo = /[!@#$%^&*(),.?":{}|<>]/.test(contraseña)
 
-
-  function ValidarContraseña(contraseña) {
-    const longitudValida = contraseña.length >= MIN_CARACTERES && contraseña.length <= MAX_CARACTERES_CONTRASEÑA
-    const tieneMayuscula = /[A-Z]/.test(contraseña)
-    const tieneMinuscula = /[a-z]/.test(contraseña)
-    const tieneNumero = /\d/.test(contraseña)
-    const tieneSimbolo = /[!@#$%^&*(),.?":{}|<>]/.test(contraseña)
-
-    return longitudValida && tieneMayuscula && tieneMinuscula && tieneNumero && tieneSimbolo
+  return longitudValida && tieneMayuscula && tieneMinuscula && tieneNumero && tieneSimbolo
 }
 
 function ValidarNombreUsuario(nombre) {
